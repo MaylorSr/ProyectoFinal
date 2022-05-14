@@ -23,7 +23,8 @@
 </head>
 
 <body>
-	<header th:fragment="navUsuario">
+	<div th:fragment="navUsuario">
+
 		<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="#" th:href="@{/}">
@@ -40,16 +41,17 @@
 				<div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link text-center text-uppercase" href="#inicio">Inicio</a>
+							<a class="nav-link text-center text-uppercase"
+								th:href="@{/private/peluqueriaLoli}">Inicio</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link text-center text-uppercase" href="#quienessomos">Quienes Sómos</a>
+							<a class="nav-link text-center text-uppercase"href="/private/peluqueriaLoli/quienesSomos">Quienes Sómos</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link text-center text-uppercase" href="#servicios">Servicios</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link text-center text-uppercase" href="#precio">Cita</a>
+							<a class="nav-link text-center text-uppercase" href="#precio">Pedir cita</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link text-center text-uppercase" href="#contacto">Contáctanos</a>
@@ -57,13 +59,35 @@
 
 						<a th:href="@{/admin/listadoServicios}"><button type="button"
 								class="btn btn-danger">Gestion</button></a>
-
 				</div>
-				</ul>
-			</div>
 			</div>
 		</nav>
-	</header>
+		<div id="cuerpo" style="margin-top: 6em;">
+			<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<img th:src="@{/media/local.png}" class="d-block w-100" alt="...">
+					</div>
+					<div class="carousel-item">
+						<img th:src="@{/media/pelando.png}" class="d-block w-100" alt="...">
+					</div>
+					<div class="carousel-item">
+						<img th:src="@{/media/peluqueros.png}" class="d-block w-100" alt="...">
+					</div>
+				</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+					data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+					data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+		</div>
+	</div>
 
 </body>
 

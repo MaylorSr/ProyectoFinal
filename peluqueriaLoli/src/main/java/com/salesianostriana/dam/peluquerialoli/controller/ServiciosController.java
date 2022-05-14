@@ -73,9 +73,16 @@ public class ServiciosController {
 		return "usuario";
 	}
 	
+	@GetMapping ("/private/peluqueriaLoli/quienesSomos")
+	public String mostrarQuienesSomos(){
+		return "quienesSomos";
+	}
+	
+	
 	@GetMapping("/admin/carrito")
 	public String mostrarCarrito() {
 		return "carrito";
 	}
-
+	
+	
 }
