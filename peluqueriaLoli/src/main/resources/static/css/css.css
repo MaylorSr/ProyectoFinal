@@ -15,6 +15,10 @@ td:hover {background-color: #19B3D3;}
 .invisible{
 	visibility: hidden;
 }
+
+#nombrePeluqueria{
+	flex: auto;
+}
 .navbar .container-fluid a {
     margin: 0 auto !important;
 }

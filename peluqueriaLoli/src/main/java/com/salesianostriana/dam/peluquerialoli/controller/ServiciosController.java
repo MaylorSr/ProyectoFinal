@@ -66,15 +66,16 @@ public class ServiciosController {
 		serviciosServicios.delete(id);
 		return "redirect:/admin/listadoServicios";
 	}
-
-	@GetMapping("/admin/carrito")
-	public String mostrarCarrito() {
-		return "carrito";
-	}
-
+	
+	
 	@GetMapping("/private/peluqueriaLoli")
 	public String mostrarPaginaWeb() {
 		return "usuario";
+	}
+	
+	@GetMapping("/admin/carrito")
+	public String mostrarCarrito() {
+		return "carrito";
 	}
 
 }
