@@ -66,23 +66,25 @@ public class ServiciosController {
 		serviciosServicios.delete(id);
 		return "redirect:/admin/listadoServicios";
 	}
-	
-	
+
 	@GetMapping("/private/peluqueriaLoli")
 	public String mostrarPaginaWeb() {
 		return "usuario";
 	}
-	
-	@GetMapping ("/private/peluqueriaLoli/quienesSomos")
-	public String mostrarQuienesSomos(){
+
+	@GetMapping("/private/peluqueriaLoli/quienesSomos")
+	public String mostrarQuienesSomos() {
 		return "quienesSomos";
 	}
-	
-	
+
+	@GetMapping("/private/peluqueriaLoli/servicios")
+	public String mostrarServiciosUser() {
+		return "listadoServicios";
+	}
+
 	@GetMapping("/admin/carrito")
 	public String mostrarCarrito() {
 		return "carrito";
 	}
-	
-	
+
 }
