@@ -5,6 +5,16 @@ body {
     background-color: rgb(64, 128, 128);
 }
 
+
+#nuevoServicio {
+	flex: auto;
+}
+td:hover {background-color: #19B3D3;}
+
+
+.invisible{
+	visibility: hidden;
+}
 .navbar .container-fluid a {
     margin: 0 auto !important;
 }

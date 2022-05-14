@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
+	<title>Listado Citas</title>
 
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	<meta name="description" content="">
@@ -33,46 +33,52 @@
 			<h1 class="text-center text-danger text-uppercase">Peluqueria Loli</h1>
 		</div>
 		<section class="container mt-3" id="servicios">
-			<h2 class="text-start fs-1 fst-italic shadow p-3 mb-5 bg-body rounded ">Listado de los citas disponibles
+			<h2 class="text-start fs-1 fst-italic shadow p-3 mb-5 bg-body rounded ">Listado de las citas disponibles
 			</h2>
+			<nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-2 p-1" th:fragment="buscador">
+				<a id="nuevoServicio" th:href="@{/admin/nuevoCita}"><button type="button"
+						class="btn btn-primary mb-1">Añadir
+						cita</button></a>
+				<form class="d-flex">
+					<input class="form-control me-2" type="text" placeholder="Search">
+					<button class="btn btn-primary" type="button">Search</button>
+				</form>
+			</nav>
 			<div class="table-responsive-sm">
-				<div class="table-responsive-sm">
-					<input class="form-control mb-3" id="tableSearch" type="text"
-						placeholder="Introduce uno de los parametros para conocer las citas que tienes">
+				<table class="table table-bordered table-info border-dark border border-3">
+					<thead>
+						<tr>
+							<th class="invisible"></th>
+							<th class="text-uppercase text-center">Id</th>
+							<th class="text-uppercase text-center">Nombre Cliente</th>
+							<th class="text-uppercase text-center">Telefono Cliente</th>
+							<th class="text-uppercase text-center">Fecha Reserva</th>
+							<th class="text-uppercase text-center">Acciones</th>
+						</tr>
+					</thead>
 
-					<a th:href="@{/admin/nuevoCita}"><button type="button" class="btn btn-primary mb-2">Añadir
-							cita</button></a>
-					<table class="table table-bordered table-info border-dark border border-3">
-						<thead>
-							<tr>
-								<th class="text-uppercase text-center">Id</th>
-								<th class="text-uppercase text-center">Nombre Cliente</th>
-								<th class="text-uppercase text-center">Telefono Cliente</th>
-								<th class="text-uppercase text-center">Fecha Reserva</th>
-								<th class="text-uppercase text-center">Acciones</th>
-							</tr>
-						</thead>
+					<tbody>
+						<tr th:each="citas : ${listadoCitas}" class="text-center">
+							<td><img th:src="@{/media/reloj.png}" width="60px"></td>
 
-						<tbody>
-							<tr th:each="citas : ${listadoCitas}" class="text-center">
-								<td th:text="${citasStat.Count}">1</td>
-								<td th:text="${citas.nombreCliente}">Nombre Cliente</td>
-								<td th:text="${citas.telefonoCliente}">Telefono Cliente</td>
-								<td th:text="${#temporals.format(citas.fecha)}">Fecha Reserva</td>
-								<td class="text-center">
-									<a href="#" th:href="@{/admin/editarCitas/{id}(id=${citas.id})}"><button
-											type="button" class="btn btn-warning"><i
-												class="fa fa-fw fa-pencil-square-o text-black"></i></button></a> |
-									<a href="#" th:href="@{/admin/borrarCita/{id}(id=${citas.id})}"><button
-											type="button" class="btn btn-danger"><i
-												class="fa fa-fw fa-times-circle text-black"></i></button></a>
-								</td>
-							</tr>
+							<td th:text="${citasStat.Count}">1</td>
+							<td th:text="${citas.nombreCliente}">Nombre Cliente</td>
+							<td th:text="${citas.telefonoCliente}">Telefono Cliente</td>
+							<td th:text="${#temporals.format(citas.fecha)}">Fecha Reserva</td>
+							<td class="text-center">
+								<a href="#" th:href="@{/admin/editarCitas/{id}(id=${citas.id})}"><button type="button"
+										class="btn btn-warning"><i
+											class="fa fa-fw fa-pencil-square-o text-black"></i></button></a> |
+								<a href="#" th:href="@{/admin/borrarCita/{id}(id=${citas.id})}"><button type="button"
+										class="btn btn-danger"><i
+											class="fa fa-fw fa-times-circle text-black"></i></button></a>
+							</td>
+						</tr>
 
-						</tbody>
-					</table>
+					</tbody>
+				</table>
 
-				</div>
+			</div>
 		</section>
 	</div>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

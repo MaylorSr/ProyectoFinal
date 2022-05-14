@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
+	<title>Nuevo Servicio</title>
 
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	<meta name="description" content="">
@@ -33,24 +33,12 @@
 			<h1 class="text-center text-danger text-uppercase">Peluqueria Loli</h1>
 		</div>
 		<section class="container mt-3" id="servicios">
-			<h2 class="text-start fs-1 fst-italic shadow p-3 mb-5 bg-body rounded ">Listado de los cortes de cabello
+			<h2 class="text-start fs-1 fst-italic shadow p-3 mb-5 bg-body rounded ">Listado de los servicios disponibles
 			</h2>
-
-			<!--
-			<form th:action="${servicios.id != 0} ? @{/editar/submit} : @{/nuevo/submit}" th:object="${servicios}"
-				method="post" class="bg-info">
-				<input th:if="${servicios.id != 0}" type="hidden" name="id" th:field="*{id}" />
-				<input type="text" name="nombre" th:field="*{nombre}" placeholder="Nombre" />
-				<input type="text" name="descripcion" th:field="*{descripcion}" placeholder="Descripcion" />
-				<input type="number" name="precio" th:field="*{precio}" placeholder="Precio" />
-				<input type="submit" name="enviar" value="Enviar">
-				<a th:href="@{/}"><input type="button" name="cancelar" value="Cancelar"></a>
-			</form>
-			-->
 			<div class="contents d-block mt-5">
 				<div class="container-fluid">
 					<header class="mb-5">
-						<h2 class="text-center text-uppercase text-white">Servicios</h2>
+						<h2 class="text-center text-uppercase text-white">Información del nuevo servicio</h2>
 					</header>
 					<form class="row" th:action="${servicios.id != 0} ? @{/admin/editar/submit} : @{/admin/nuevo/submit}"
 						th:object="${servicios}" method="post">

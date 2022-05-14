@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
+	<title>Listado Servicios</title>
 
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	<meta name="description" content="">
@@ -33,17 +33,22 @@
 		<section class="container mt-3" id="servicios">
 			<h2 class="text-start fs-1 fst-italic shadow p-3 mb-5 bg-body rounded ">Listado de los servicios disponibles
 			</h2>
-			<div class="table-responsive-sm">
-				<input class="form-control mb-3" id="tableSearch" type="text"
-					placeholder="Introduce uno de los parametros para conocer el corte de cabello">
-
-				<a th:href="@{/admin/nuevo}"><button type="button" class="btn btn-primary mb-2">Añadir
+			<nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-2 p-1" th:fragment="buscador">
+				<a id="nuevoServicio" th:href="@{/admin/nuevo}"><button type="button"
+						class="btn btn-primary mb-1">Añadir
 						servicio</button></a>
+				<form class="d-flex">
+					<input class="form-control me-2" type="text" placeholder="Search">
+					<button class="btn btn-primary" type="button">Search</button>
+				</form>
+			</nav>
 
+
+			<div class="table-responsive-sm">
 				<table class="table table-bordered table-info border-dark border border-3">
 					<thead>
 						<tr>
-							<th></th>
+							<th class="invisible"></th>
 							<th class="text-uppercase text-center">Id</th>
 							<th class="text-uppercase text-center">Nombre</th>
 							<th class="text-uppercase text-center">Descripcion</th>
@@ -52,7 +57,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="servicios : ${listadoServicios}" class="text-center">
+						<tr th:each="servicios : ${listadoServicios}" class="text-center ">
 							<td><img th:src="@{/media/emblema-peluqueria.png}" width="60px"></td>
 							<td th:text="${serviciosStat.Count}">1</td>
 							<td th:text="${servicios.nombre}">Nombre</td>
