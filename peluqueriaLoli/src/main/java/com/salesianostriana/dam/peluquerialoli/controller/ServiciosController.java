@@ -79,7 +79,13 @@ public class ServiciosController {
 
 	@GetMapping("/private/peluqueriaLoli/servicios")
 	public String mostrarServiciosUser() {
+		
 		return "listadoServicios";
+	}
+	
+	@GetMapping ("private/prueba")
+	public String probar () {
+		return "prueba";
 	}
 
 	@GetMapping("/admin/carrito")

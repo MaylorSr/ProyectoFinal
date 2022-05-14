@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
+
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
@@ -32,7 +33,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.accessDeniedPage("/error").and().formLogin()
 				.defaultSuccessUrl("/private/peluqueriaLoli").loginPage("/").loginProcessingUrl("/login")
 				.failureUrl("/login-error").permitAll().and().logout().logoutUrl("/logout").logoutSuccessUrl("/")
-				.permitAll();
+				.permitAll()
+				.and().headers().frameOptions().disable();
 	}
 
 	@Bean
@@ -49,4 +51,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return userDetailsManager;
 
 	}
+	
 }
+
