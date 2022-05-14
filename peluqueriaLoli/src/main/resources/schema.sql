@@ -1,4 +1,4 @@
-drop table servicios if exists;
+/*drop table servicios if exists;
 drop sequence if exists hibernate_sequence;
 
 create sequence hibernate_sequence start with 100 increment by 1;
@@ -11,3 +11,4 @@ create table servicios (
     precio numeric,
 	primary key (id)
 );
+*/
