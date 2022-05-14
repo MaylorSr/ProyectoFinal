@@ -57,7 +57,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="servicios : ${listadoServicios}" class="text-center ">
+						<tr th:each="servicios : ${listadoServicios}" class="text-center align-middle">
 							<td><img th:src="${not (#strings.isEmpty(servicios.imagen))} ? ${servicios.imagen} : 'https://upload.wikimedia.org/wikipedia/commons/d/da/Imagen_no_disponible.svg'"
 									class="img-responsive icono-servicios" alt="imagen de los distintos servicios disponibles" /></td>
 							<td th:text="${serviciosStat.Count}">1</td>

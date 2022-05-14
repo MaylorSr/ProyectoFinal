@@ -33,7 +33,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.defaultSuccessUrl("/private/peluqueriaLoli").loginPage("/").loginProcessingUrl("/login")
 				.failureUrl("/login-error").permitAll().and().logout().logoutUrl("/logout").logoutSuccessUrl("/")
 				.permitAll();
-
 	}
 
 	@Bean
