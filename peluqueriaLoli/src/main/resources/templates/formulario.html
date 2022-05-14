@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	
+
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,7 +40,8 @@
 					<header class="mb-5">
 						<h2 class="text-center text-uppercase text-white">Información del nuevo servicio</h2>
 					</header>
-					<form class="row" th:action="${servicios.id != 0} ? @{/admin/editar/submit} : @{/admin/nuevo/submit}"
+					<form class="row"
+						th:action="${servicios.id != 0} ? @{/admin/editar/submit} : @{/admin/nuevo/submit}"
 						th:object="${servicios}" method="post">
 						<input th:if="${servicios.id != 0}" type="hidden" name="id" th:field="*{id}" />
 						<div class="col-md-6">
@@ -60,11 +61,16 @@
 								placeholder="0" />
 
 						</div>
+						<div class="col-md-6">
+							<label for="imagen" class="form-label text-white h5">Imagen</label>
+							<input class="form-control" type="text" name="imagen" th:field="*{imagen}"
+								placeholder="Url válida de la imagen que se pondrá" />
+						</div>
 						<div class="col-md-12 text-center mb-1">
 							<br>
 							<input class="bg-info border-white w-50 mb-2" type="submit" name="enviar" value="Enviar">
-							<a th:href="@{/admin/listadoServicios}"><input class="bg-danger border-white w-50" type="button" name="cancelar"
-									value="Cancelar"></a>
+							<a th:href="@{/admin/listadoServicios}"><input class="bg-danger border-white w-50"
+									type="button" name="cancelar" value="Cancelar"></a>
 						</div>
 					</form>
 				</div>

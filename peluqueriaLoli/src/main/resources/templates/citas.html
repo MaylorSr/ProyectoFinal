@@ -48,7 +48,6 @@
 				<table class="table table-bordered table-info border-dark border border-3">
 					<thead>
 						<tr>
-							<th class="invisible"></th>
 							<th class="text-uppercase text-center">Id</th>
 							<th class="text-uppercase text-center">Nombre Cliente</th>
 							<th class="text-uppercase text-center">Telefono Cliente</th>
@@ -59,8 +58,6 @@
 
 					<tbody>
 						<tr th:each="citas : ${listadoCitas}" class="text-center">
-							<td><img th:src="@{/media/reloj.png}" width="60px"></td>
-
 							<td th:text="${citasStat.Count}">1</td>
 							<td th:text="${citas.nombreCliente}">Nombre Cliente</td>
 							<td th:text="${citas.telefonoCliente}">Telefono Cliente</td>

@@ -1,5 +1,5 @@
-INSERT INTO SERVICIOS (id, nombre, descripcion, precio) VALUES (NEXTVAL('hibernate_sequence'),'Corte','Corte de pelo chango a lo Cr7', '9'); 
-INSERT INTO SERVICIOS (id, nombre, descripcion, precio) VALUES (NEXTVAL('hibernate_sequence'),'Tintado','Tintado de cabello', '11'); 
+INSERT INTO SERVICIOS (id, nombre, descripcion, imagen, precio) VALUES (NEXTVAL('hibernate_sequence'),'Corte sin degradado','Corte para caballeros sin incluir un degradado', 'https://hombresconestilo.com/wp-content/uploads/2020/11/variedad-de-cortes-de-pelo-para-calvos.jpg.webp', '9'); 
+INSERT INTO SERVICIOS (id, nombre, descripcion, imagen, precio) VALUES (NEXTVAL('hibernate_sequence'),'Tintado','Tintado de cabello', 'https://cdn-0.somosmamas.com.ar/wp-content/uploads/2019/04/1f6a0ad9ba8d51d39b2abe3ce1b140d6.jpg', '11'); 
 --INSERT INTO CITAS (id, nombre_cliente, telefono_cliente, fecha) VALUES (NEXTVAL('hibernate_sequence'),'Jóse','608991690', '17-12-2001'); 
 --INSERT INTO CITAS (id, nombre_cliente, telefono_cliente, fecha) VALUES (NEXTVAL('hibernate_sequence'),'Jóse','608991690', '17-12-2001'); 
 --INSERT INTO CITAS (id, nombre_cliente, telefono_cliente, fecha) VALUES (NEXTVAL('hibernate_sequence'),'Jóse','608991690', '17-12-2001'); 

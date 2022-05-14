@@ -5,7 +5,9 @@ body {
     background-color: rgb(64, 128, 128);
 }
 
-
+.icono-servicios {
+ 	width: 90px;
+ }
 #nuevoServicio {
 	flex: auto;
 }
