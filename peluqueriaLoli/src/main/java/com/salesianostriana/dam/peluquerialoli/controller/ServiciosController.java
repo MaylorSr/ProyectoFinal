@@ -82,11 +82,6 @@ public class ServiciosController {
 		
 		return "listadoServicios";
 	}
-	
-	@GetMapping ("private/prueba")
-	public String probar () {
-		return "prueba";
-	}
 
 	@GetMapping("/admin/carrito")
 	public String mostrarCarrito() {
