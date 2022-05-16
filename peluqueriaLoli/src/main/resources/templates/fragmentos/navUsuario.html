@@ -45,10 +45,12 @@
 								th:href="@{/private/peluqueriaLoli}">Inicio</a>
 						</li>
 						<li class="nav-item ">
-							<a class="nav-link text-center text-uppercase" href="/private/peluqueriaLoli/quienesSomos">Quienes Sómos</a>
+							<a class="nav-link text-center text-uppercase"
+								href="/private/peluqueriaLoli/quienesSomos">Quienes Sómos</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link text-center text-uppercase" href="/private/peluqueriaLoli/servicios">Servicios</a>
+							<a class="nav-link text-center text-uppercase"
+								href="/private/peluqueriaLoli/servicios">Servicios</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link text-center text-uppercase" href="#precio">Pedir cita</a>
@@ -56,9 +58,10 @@
 						<li class="nav-item">
 							<a class="nav-link text-center text-uppercase" href="#contacto">Contáctanos</a>
 						</li>
-
-						<a th:href="@{/admin/listadoServicios}"><button type="button"
+						<!--Poner con th sec
+						<a th:href="@{/admin/listadoServicios}" th:="${username.role = ADMIN}"><button type="button"
 								class="btn btn-danger">Gestion</button></a>
+-->
 				</div>
 			</div>
 		</nav>
