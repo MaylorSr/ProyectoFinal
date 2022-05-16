@@ -24,60 +24,36 @@
 
 <body>
 	<nav th:replace="~{fragmentos/navUsuario::div}"></nav>
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-sm-3 col-md-2 sidebar">
-				<ul class="nav nav-sidebar">
-					<li th:each="servicios : ${listadoServicios}"><a href="#"
-							th:text="${servicios.nombre}">Servicios</a></li>
-				</ul>
-			</div>
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
-				<h1>triana.salesianos.edu Shop</h1>
-				<div class="row">
-					<h3>Servicios</h3>
-
-					<div class="col-sm-3" th:each="servicios : ${listadoServicios}">
-
-						<div class="col-item">
-							<div class="photo">
-								<img src="http://placehold.it/350x260"
-									th:src="${#strings.isEmpty(servicios.imagen)} ? 'http://placehold.it/350x260' : ${servicios.imagen}"
-									class="img-responsive" alt="a" />
-							</div>
-							<div class="info">
-								<div class="row">
-									<div class="price col-md-12">
-										<h5 th:text="${#strings.abbreviate(servicios.nombre,65)}">Nombre</h5>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+	<div class="col-12 col-md-4" th:each="servicios : ${listadoServicios}">
+		<div class="card-body">
+			<img th:src="${servicios.imagen}" alt="" width="100">
+			<div class="ps-3">
+				<h1 class="" th:text="${servicios.nombre}">Nombre</h1>
 			</div>
 		</div>
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+	</div>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+	<th:block th:fragment="javascriptfinal">
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js" th:src="@{/webjars/jquery/jquery.min.js}"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 			th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-
-		<th:block th:fragment="javascriptfinal">
-			<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-				th:src="@{/webjars/jquery/jquery.min.js}"></script>
-			<!-- Include all compiled plugins (below), or include individual files as needed -->
-			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-				th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-		</th:block>
+	</th:block>
 
 
 
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://code.jquery.com/jquery-3.3.1.min.js" th:src="@{/webjars/jquery/jquery.min.js}"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-			th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 
 </body>
 

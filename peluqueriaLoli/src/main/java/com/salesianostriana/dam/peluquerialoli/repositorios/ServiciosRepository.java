@@ -10,6 +10,6 @@ public interface ServiciosRepository extends JpaRepository<Servicios, Long> {
 	
 
 	@Query("select s from Servicios s")
-	public List<Servicios> findAll();
+	public List<Servicios> addQuirirIds();
 
 }
