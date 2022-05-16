@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.salesianostriana.dam.peluquerialoli.model.Citas;
 import com.salesianostriana.dam.peluquerialoli.servicios.CitasServicios;
 
@@ -58,4 +60,14 @@ public class CitasController {
 		citasServicios.delete(id);
 		return "redirect:/admin/listadoCitas";
 	}
+	
+	/*
+	@GetMapping("/admin/listadoCitas/buscar/nombre/cliente")
+	public String buscarCliente(Model model, @RequestParam String nombreCliente) {
+		model.addAttribute("listadoCitas", citasServicios.buscarPorNombreCliente(nombreCliente));
+		return "citas";
+	}*/
+	
+	
+	
 }

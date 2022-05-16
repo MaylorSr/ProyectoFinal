@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.salesianostriana.dam.peluquerialoli.model.Servicios;
 import com.salesianostriana.dam.peluquerialoli.servicios.ServiciosServicios;
 
@@ -87,5 +89,12 @@ public class ServiciosController {
 	public String mostrarCarrito() {
 		return "carrito";
 	}
+	
+	@GetMapping("/admin/listadoServicios/buscar/nombre")
+	public String buscar(Model model, @RequestParam String nombre) {
+		model.addAttribute("listadoServicios", serviciosServicios.buscarPorNombre(nombre));
+		return "servicios";
+	}
 
+	
 }

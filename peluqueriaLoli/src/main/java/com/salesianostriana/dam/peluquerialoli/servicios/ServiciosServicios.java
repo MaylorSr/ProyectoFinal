@@ -32,7 +32,12 @@ public class ServiciosServicios extends ServicioBaseImpl<Servicios, Long, Servic
 	public Servicios findById(long id) {
 		return serviciosRepository.findById(id).orElse(null);
 	}
+
+	public List<Servicios> buscarPorNombre(String cadena) {
+		return repositorio.findByNombreContainingIgnoreCase(cadena);
+	}
 	
+
 	
 	
 	

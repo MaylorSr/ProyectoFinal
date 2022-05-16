@@ -10,7 +10,7 @@ import com.salesianostriana.dam.peluquerialoli.repositorios.CitasRepository;
 import com.salesianostriana.dam.peluquerialoli.servicios.base.ServicioBaseImpl;
 
 @Service
-public class CitasServicios extends ServicioBaseImpl<Citas, Long, CitasRepository>{
+public class CitasServicios extends ServicioBaseImpl<Citas, Long, CitasRepository> {
 
 	@Autowired
 	private CitasRepository citasRepository;
@@ -19,27 +19,37 @@ public class CitasServicios extends ServicioBaseImpl<Citas, Long, CitasRepositor
 		super();
 		this.citasRepository = repo;
 	}
-	
-	public Citas add(Citas citas) { return citasRepository.save(citas); }
-	
-	public Citas edit(Citas citas) { return citasRepository.save(citas); }
 
-	public void delete(Citas citas) { citasRepository.delete(citas); }
-	
-	public void delete(long id) { citasRepository.deleteById(id); }
-	
-	public List<Citas> findAll() { return citasRepository.findAll(); }
-	
+	public Citas add(Citas citas) {
+		return citasRepository.save(citas);
+	}
+
+	public Citas edit(Citas citas) {
+		return citasRepository.save(citas);
+	}
+
+	public void delete(Citas citas) {
+		citasRepository.delete(citas);
+	}
+
+	public void delete(long id) {
+		citasRepository.deleteById(id);
+	}
+
+	public List<Citas> findAll() {
+		return citasRepository.findAll();
+	}
+
 	public Citas findById(long id) {
 		return citasRepository.findById(id).orElse(null);
 	}
+/*
+	
+	public List<Citas> buscarPorNombreCliente(String cadena) {
+		return repositorio.findByNombreContainingIgnoreCase(cadena);
+	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
+	*/
+
 }

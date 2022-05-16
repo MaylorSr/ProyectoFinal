@@ -12,4 +12,6 @@ public interface ServiciosRepository extends JpaRepository<Servicios, Long> {
 	@Query("select s from Servicios s")
 	public List<Servicios> addQuirirIds();
 
+	public List<Servicios> findByNombreContainingIgnoreCase(String nombre);
+
 }
