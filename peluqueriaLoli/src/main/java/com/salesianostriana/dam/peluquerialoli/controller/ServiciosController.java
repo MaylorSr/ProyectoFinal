@@ -1,5 +1,6 @@
 package com.salesianostriana.dam.peluquerialoli.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +24,6 @@ public class ServiciosController {
 	@GetMapping("/admin/listadoServicios")
 	public String listarServicios(Model model) {
 
-		/*
-		 * List<Servicios> lista =
-		 * List.of(Servicios.builder().nombre("Corte").descripcion("").precio(5).build()
-		 * , Servicios.builder().nombre("Teñido").descripcion("").precio(10).build());
-		 * model.addAttribute("listadoServicios", lista);
-		 */
 		model.addAttribute("listadoServicios", serviciosServicios.findAll());
 		return "servicios";
 	}
@@ -82,8 +77,8 @@ public class ServiciosController {
 	}
 
 	@GetMapping("/private/peluqueriaLoli/servicios")
-	public String mostrarServiciosUser() {
-		
+	public String mostrarServiciosUser(Model model) {
+		model.addAttribute("listadoServicios", serviciosServicios.findAll());
 		return "listadoServicios";
 	}
 
@@ -91,12 +86,11 @@ public class ServiciosController {
 	public String mostrarCarrito() {
 		return "carrito";
 	}
-	
+
 	@GetMapping("/admin/listadoServicios/buscar/nombre")
 	public String buscar(Model model, @RequestParam String nombre) {
 		model.addAttribute("listadoServicios", serviciosServicios.buscarPorNombre(nombre));
 		return "servicios";
 	}
 
-	
 }

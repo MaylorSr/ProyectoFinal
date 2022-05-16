@@ -24,11 +24,33 @@
 
 <body>
 	<nav th:replace="~{fragmentos/navUsuario::div}"></nav>
-	<div class="col-12 col-md-4" th:each="servicios : ${listadoServicios}">
-		<div class="card-body">
-			<img th:src="${servicios.imagen}" alt="" width="100">
-			<div class="ps-3">
-				<h1 class="" th:text="${servicios.nombre}">Nombre</h1>
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<h1>triana.salesianos.edu Shop</h1>
+		<div class="row">
+			<div class="col-sm-3" th:each="servicios : ${listadoServicios}">
+				<div class="col-item">
+					<div class="photo">
+						<img src="http://placehold.it/350x260"
+							th:src="${#strings.isEmpty(servicios.imagen)} ? 'http://placehold.it/20x40' : ${servicios.imagen}"
+							class="img-responsive" alt="" />
+					</div>
+					<div class="info">
+						<div class="row">
+							<div class="price col-md-12">
+								<h5 th:text="${#strings.abbreviate(servicios.nombre,65)}">Nombre</h5>
+								<div class="price-text-color">
+
+									<th:block th:if="${servicios.precio > 0}">
+										<span class="price-original"
+											th:text="${#numbers.formatCurrency(servicios.precio)}">12,00€</span>
+										<span class="label label-danger"
+											th:text=${#numbers.formatPercent(servicios.precio,1,0)}>1%</span>
+									</th:block>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 
