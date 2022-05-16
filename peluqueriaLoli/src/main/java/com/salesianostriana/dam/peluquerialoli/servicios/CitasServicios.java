@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.peluquerialoli.servicios;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,8 +41,8 @@ public class CitasServicios extends ServicioBaseImpl<Citas, Long, CitasRepositor
 		return citasRepository.findAll();
 	}
 
-	public Citas findById(long id) {
-		return citasRepository.findById(id).orElse(null);
+	public Optional<Citas> findById(long id) {
+		return citasRepository.findById(id);
 	}
 /*
 	

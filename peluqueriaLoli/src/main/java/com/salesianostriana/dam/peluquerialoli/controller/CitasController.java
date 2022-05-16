@@ -1,5 +1,7 @@
 package com.salesianostriana.dam.peluquerialoli.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,7 +41,7 @@ public class CitasController {
 	@GetMapping("/admin/editarCitas/{id}")
 	public String mostrarFormularioEdicion(@PathVariable("id") long id, Model model) {
 
-		Citas aEditar = citasServicios.findById(id);
+		Optional<Citas> aEditar = citasServicios.findById(id);
 
 		if (aEditar != null) {
 			model.addAttribute("citas", aEditar);

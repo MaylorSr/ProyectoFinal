@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.peluquerialoli.servicios;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,8 +30,8 @@ public class ServiciosServicios extends ServicioBaseImpl<Servicios, Long, Servic
 	
 	public List<Servicios> findAll() { return serviciosRepository.findAll(); }
 	
-	public Servicios findById(long id) {
-		return serviciosRepository.findById(id).orElse(null);
+	public Optional<Servicios> findById(long id) {
+		return serviciosRepository.findById(id);
 	}
 
 	public List<Servicios> buscarPorNombre(String cadena) {
