@@ -1,47 +1,3 @@
-drop table servicios if exists;
-drop table citas if exists;
-drop table linea_de_venta if exists;
-
-drop sequence if exists hibernate_sequence;
-
-create sequence hibernate_sequence start with 100 increment by 1;
-
-create table servicios (
-	id bigint not null, 
-	nombre varchar(512),
-    descripcion varchar(512), 
-	imagen text, 
-    precio numeric,
-	primary key (id)
-);
-
-CREATE TABLE citas (
-	id bigint not null,
-	nombre_cliente varchar (512),
-	telefono_cliente varchar (19),
-	fecha date,
-	primary key (id)
-);
-
-
-CREATE TABLE linea_de_venta(
-	id bigint not null,
-	servicios_id bigint,
-	venta_id bigint
-	primary key (id)
-);
-
-
-CREATE TABLE venta (
-	id bigint not null,
-	linea_de_venta_id bigint,
-	primary key (id)
-);
-
-
-alter table linea_de_venta add constraint fk_linea_de_venta_servicios foreign key (servicios_id) references servicios;
-alter table linea_de_venta add constraint fk_linea_de_venta_venta foreign key (venta_id) references citas;
-alter table venta add constraint fk_venta_linea_de_venta foreign key (linea_de_venta_id) references linea_de_venta;
 
 
 INSERT INTO servicios (id, nombre, descripcion, imagen, precio) VALUES (NEXTVAL('hibernate_sequence'),'Corte sin degradado','Corte para caballeros sin incluir un degradado', 'https://hombresconestilo.com/wp-content/uploads/2020/11/variedad-de-cortes-de-pelo-para-calvos.jpg.webp', '9'); 
@@ -56,7 +12,4 @@ INSERT INTO servicios (id, nombre, descripcion, imagen, precio) VALUES (NEXTVAL(
 INSERT INTO servicios (id, nombre, descripcion, imagen, precio) VALUES (NEXTVAL('hibernate_sequence'),'Planca Cabello Largo',' ', 'https://i.pinimg.com/originals/cb/56/10/cb561081db1ae79d63c977d596247172.jpg', '16'); 
 INSERT INTO servicios (id, nombre, descripcion, imagen, precio) VALUES (NEXTVAL('hibernate_sequence'),'Decoloración','', 'https://cortesdecabellohombre.com/wp-content/uploads/2018/03/comb-over-con-cabello-blanco.jpg', '20'); 
 
---INSERT INTO CITAS (id, nombre_cliente, telefono_cliente, fecha) VALUES (NEXTVAL('hibernate_sequence'),'Jóse','608991690', '17-12-2001'); 
---INSERT INTO CITAS (id, nombre_cliente, telefono_cliente, fecha) VALUES (NEXTVAL('hibernate_sequence'),'Jóse','608991690', '17-12-2001'); 
---INSERT INTO CITAS (id, nombre_cliente, telefono_cliente, fecha) VALUES (NEXTVAL('hibernate_sequence'),'Jóse','608991690', '17-12-2001'); 
 
