@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-
-
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,11 +38,12 @@
 				<a id="nuevoServicio" th:href="@{/admin/nuevoCita}"><button type="button"
 						class="btn btn-primary mb-1">Añadir
 						cita</button></a>
-				<form class="d-flex" method="GET" th:action="@{/admin/listadoCitas/buscar/nombre/cliente)}">
-					<input class="form-control me-2" type="text" placeholder="Nombre Cliente" name="nombreCliente"
-						id="nombreCliente" th:value="${param.nombre}">
+						<!--
+					<form class="d-flex" method="GET" th:action="@{/admin/listadoServicios/buscar/nombre}">
+					<input class="form-control me-2" type="text" placeholder="Nombre Servicio" name="nombre" id="nombre"
+						th:value="${param.nombre}">
 					<button class="btn btn-primary" type="submit">Buscar</button>
-				</form>
+				</form>-->
 			</nav>
 			<div class="table-responsive-sm">
 				<table class="table table-bordered table-info border-dark border border-3">
@@ -70,7 +69,7 @@
 											class="fa fa-fw fa-pencil-square-o text-black"></i></button></a> |
 								|
 								<a href="#"><button type="button" class="btn btn-danger" data-bs-toggle="modal"
-										data-bs-target="#myModal" th:attr="data-bs-target='#myModal'+${servicios.id}"><i
+										data-bs-target="#myModal" th:attr="data-bs-target='#myModal'+${citas.id}"><i
 											class="fa fa-fw fa-trash text-black"></i></button></a>
 								<div class="modal" id="myModal" tabindex="-1" th:id="'myModal'+${citas.id}">
 									<div class="modal-dialog">

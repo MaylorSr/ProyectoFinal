@@ -2,6 +2,8 @@ package com.salesianostriana.dam.peluquerialoli.controller;
 
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +18,8 @@ import com.salesianostriana.dam.peluquerialoli.servicios.CitasServicios;
 
 @Controller
 public class CitasController {
-
+	@Autowired
+	HttpSession session;
 	@Autowired
 	private CitasServicios citasServicios;
 
@@ -62,7 +65,7 @@ public class CitasController {
 		citasServicios.delete(id);
 		return "redirect:/admin/listadoCitas";
 	}
-	
+
 	/*
 	@GetMapping("/admin/listadoCitas/buscar/nombre/cliente")
 	public String buscarCliente(Model model, @RequestParam String nombre) {
@@ -70,6 +73,4 @@ public class CitasController {
 		return "citas";
 	}
 	*/
-	
-	
 }

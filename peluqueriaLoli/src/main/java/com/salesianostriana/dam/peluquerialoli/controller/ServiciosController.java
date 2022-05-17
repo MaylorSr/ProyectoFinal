@@ -95,6 +95,7 @@ public class ServiciosController {
 		return "servicios";
 	}
 
+	
 	@PostMapping("/private/peluqueriaLoli/search")
 	public String searchProducto(@ModelAttribute("searchForm") SearchBean searchBean, Model model) {
 		model.addAttribute("listadoServicios", serviciosServicios.buscarPorNombre(searchBean.getSearch()));
