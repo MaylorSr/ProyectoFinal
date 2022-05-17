@@ -7,11 +7,11 @@ import com.salesianostriana.dam.peluquerialoli.model.Citas;
 
 public interface CitasRepository extends JpaRepository <Citas, Long> {
 
-	/*
+	
 	@Query("select c from Citas c")
 	public List<Citas> addQuirirIds();
-	public List<Citas> findByNombreContainingIgnoreCase(String nombre);
-*/
+	public List<Citas> findByNombreContainsIgnoreCase(String nombre);
+
 	
 	
 	

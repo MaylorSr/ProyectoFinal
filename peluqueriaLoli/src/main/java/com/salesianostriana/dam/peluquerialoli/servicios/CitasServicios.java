@@ -45,9 +45,9 @@ public class CitasServicios extends ServicioBaseImpl<Citas, Long, CitasRepositor
 		return citasRepository.findById(id);
 	}
 
-	/*
+	
 	public List<Citas> buscarPorNombre(String cadena) {
-		return repositorio.findByNombreContainingIgnoreCase(cadena);
-	}*/
+		return repositorio.findByNombreContainsIgnoreCase(cadena);
+	}
 
 }

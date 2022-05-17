@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,12 +39,12 @@
 				<a id="nuevoServicio" th:href="@{/admin/nuevoCita}"><button type="button"
 						class="btn btn-primary mb-1">Añadir
 						cita</button></a>
-						<!--
-					<form class="d-flex" method="GET" th:action="@{/admin/listadoServicios/buscar/nombre}">
-					<input class="form-control me-2" type="text" placeholder="Nombre Servicio" name="nombre" id="nombre"
+				
+					<form class="d-flex" method="GET" th:action="@{/admin/listadoCitas/buscar/nombre}">
+					<input class="form-control me-2" type="text" placeholder="Nombre Citas" name="nombre" id="nombre"
 						th:value="${param.nombre}">
 					<button class="btn btn-primary" type="submit">Buscar</button>
-				</form>-->
+				</form>
 			</nav>
 			<div class="table-responsive-sm">
 				<table class="table table-bordered table-info border-dark border border-3">
@@ -53,6 +54,7 @@
 							<th class="text-uppercase text-center">Nombre Cliente</th>
 							<th class="text-uppercase text-center">Telefono Cliente</th>
 							<th class="text-uppercase text-center">Fecha Reserva</th>
+							<th class="text-uppercase text-center">Hora Reserva</th>
 							<th class="text-uppercase text-center">Acciones</th>
 						</tr>
 					</thead>
@@ -60,9 +62,10 @@
 					<tbody>
 						<tr th:each="citas : ${listadoCitas}" class="text-center">
 							<td th:text="${citasStat.Count}">1</td>
-							<td th:text="${citas.nombreCliente}">Nombre Cliente</td>
+							<td th:text="${citas.nombre}">Nombre Cliente</td>
 							<td th:text="${citas.telefonoCliente}">Telefono Cliente</td>
 							<td th:text="${#temporals.format(citas.fecha)}">Fecha Reserva</td>
+							<td th:text="${(citas.hora)}">Hora Reserva</td>
 							<td class="text-center">
 								<a href="#" th:href="@{/admin/editarCitas/{id}(id=${citas.id})}"><button type="button"
 										class="btn btn-warning"><i

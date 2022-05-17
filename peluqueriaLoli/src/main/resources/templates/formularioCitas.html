@@ -57,10 +57,10 @@
 						th:object="${citas}" method="post">
 						<input th:if="${citas.id != 0}" type="hidden" name="id" th:field="*{id}" />
 						<div class="col-md-6">
-							<label for="nombreCliente" class="form-label text-white h5">Nombre del Cliente</label>
-							<input class="form-control" type="text" name="nombreCliente" th:field="*{nombreCliente}"
+							<label for="nombre" class="form-label text-white h5">Nombre del Cliente</label>
+							<input class="form-control" type="text" name="nombre" th:field="*{nombre}"
 								placeholder="Juan José" />
-								
+
 						</div>
 						<div class="col-md-6">
 							<label for="telefonoCliente" class="form-label text-white h5">Telefono del Cliente</label>
@@ -68,16 +68,21 @@
 								placeholder="609835644" />
 						</div>
 						<div class="col-md-6">
-							<label for="fecha" class="form-label text-white h5">Rereservar para:</label>
+							<label for="fecha" class="form-label text-white h5">Rereservar fecha:</label>
 							<input class="form-control" type="date" name="fecha" th:field="*{fecha}"
 								placeholder="17/12/2001" />
 
 						</div>
+						<div class="col-md-6">
+							<label for="hora" class="form-label text-white h5">Rereservar hora:</label>
+							<input class="form-control" type="time" name="hora" th:field="*{hora}"
+								placeholder="18:15" />
+						</div>
 						<div class="col-md-12 text-center mb-1">
 							<br>
 							<input class="bg-info border-white w-50 mb-2" type="submit" name="enviar" value="Enviar">
-							<a th:href="@{/admin/listadoCitas}"><input class="bg-danger border-white w-50"
-									type="button" name="cancelar" value="Cancelar"></a>
+							<a th:href="@{/admin/listadoCitas}"><input class="bg-danger border-white w-50" type="button"
+									name="cancelar" value="Cancelar"></a>
 						</div>
 					</form>
 				</div>

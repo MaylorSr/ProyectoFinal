@@ -66,11 +66,11 @@ public class CitasController {
 		return "redirect:/admin/listadoCitas";
 	}
 
-	/*
-	@GetMapping("/admin/listadoCitas/buscar/nombre/cliente")
+
+	@GetMapping("/admin/listadoCitas/buscar/nombre")
 	public String buscarCliente(Model model, @RequestParam String nombre) {
 		model.addAttribute("listadoCitas", citasServicios.buscarPorNombre(nombre));
 		return "citas";
 	}
-	*/
+	
 }

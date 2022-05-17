@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.peluquerialoli.model;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,10 +25,12 @@ public class Citas {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
-	private String nombreCliente;
+	private String nombre;
 	private String telefonoCliente;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fecha;
+	
+	private LocalTime hora;
 
 }

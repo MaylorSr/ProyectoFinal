@@ -19,14 +19,17 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Servicios {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
 	private String nombre;
-	@Lob 
+	@Lob
 	private String descripcion;
-	
-	@Column (length = 1000)
+
+	@Column(length = 1000)
 	private String imagen;
 	private double precio;
+	
+	private double duracion;
+
 }

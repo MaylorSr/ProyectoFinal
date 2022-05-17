@@ -55,6 +55,7 @@
 							<th class="text-uppercase text-center">Nombre</th>
 							<th class="text-uppercase text-center">Descripcion</th>
 							<th class="text-uppercase text-center">Precio</th>
+							<th class="text-uppercase text-center">Duración Servicio</th>
 							<th class="text-uppercase text-center">Acciones</th>
 						</tr>
 					</thead>
@@ -66,6 +67,7 @@
 							<td th:text="${servicios.nombre}">Nombre</td>
 							<td th:text="${servicios.descripcion}">Descripcion</td>
 							<td th:text="${#numbers.formatCurrency(servicios.precio)}">Precio</td>
+							<td th:text="${servicios.duracion}">Duración Servicio</td>
 							<td class="text-center">
 
 								<a href="#" th:href="@{/admin/editar/{id}(id=${servicios.id})}"><button type="button"
