@@ -38,6 +38,10 @@ public class ServiciosServicios extends ServicioBaseImpl<Servicios, Long, Servic
 		return repositorio.findByNombreContainingIgnoreCase(cadena);
 	}
 	
+	public List<Servicios> findAllServices() {
+		return repositorio.findAll();
+	}
+	
 
 	
 	

@@ -1,6 +1,6 @@
 package com.salesianostriana.dam.peluquerialoli.controller;
 
-
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +17,8 @@ import com.salesianostriana.dam.peluquerialoli.formbeans.SearchBean;
 
 @Controller
 public class ServiciosController {
-
+	@Autowired
+	HttpSession session;
 	@Autowired
 	private ServiciosServicios serviciosServicios;
 
@@ -77,6 +78,7 @@ public class ServiciosController {
 	@GetMapping("/private/peluqueriaLoli/servicios")
 	public String mostrarServiciosUser(Model model) {
 		model.addAttribute("listadoServicios", serviciosServicios.findAll());
+		model.addAttribute("searchForm", new SearchBean());
 		return "listadoServicios";
 	}
 
@@ -85,16 +87,17 @@ public class ServiciosController {
 		return "carrito";
 	}
 
-	@PostMapping("/admin/listadoServicios/buscar/nombre")
+	@GetMapping("/admin/listadoServicios/buscar/nombre")
 	public String buscar(Model model, @RequestParam String nombre) {
 		model.addAttribute("listadoServicios", serviciosServicios.buscarPorNombre(nombre));
 		return "servicios";
 	}
 
-	@PostMapping("/private/peluqueriaLoli/servicios/buscar/nombre")
+	@PostMapping("/private/peluqueriaLoli/search")
 	public String searchProducto(@ModelAttribute("searchForm") SearchBean searchBean, Model model) {
-		model.addAttribute("productos", serviciosServicios.buscarPorNombre(searchBean.getSearch()));
+		model.addAttribute("listadoServicios", serviciosServicios.buscarPorNombre(searchBean.getSearch()));
 		return "listadoServicios";
 	}
+
 
 }

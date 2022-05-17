@@ -29,19 +29,13 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main w-100 p-5 bg-warning">
-				<h1 class="mt-4 mb-4">Servicios disponibles</h1>
-				<div class="principal">
-
-					<form action="#" th:action="@{search}" th:object="${searchForm}" method="POST">
-						<input type="text" name="nombre" placeholder="Buscar Por Nombre" th:field="*{search}"
-							style="margin-left: 5%; padding: 4px;" />
-						<button class="btn- btn-danger" type="submit" style="padding: 4px;">
-							<span class="glyphicon glyphicon-search"></span>
-						</button>
+				<nav class="navbar navbar-expand-sm navbar-dark  mb-2 p-1">
+					<h1 id="nuevoServicio">Servicios disponibles</h1>
+					<form class="d-flex" th:object="${searchForm}" method="POST" th:action="@{search}">
+						<input type="text" name="nombre" placeholder="Buscar Por Nombre" th:field="*{search}">
+						<button class="btn btn-primary" type="submit">Buscar</button>
 					</form>
-
-
-				</div>
+				</nav>
 				<hr class="text-dark">
 				</hr>
 				<div class="row">
