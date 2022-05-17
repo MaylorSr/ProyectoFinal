@@ -41,7 +41,7 @@
 				<form class="d-flex" method="GET" th:action="@{/admin/listadoServicios/buscar/nombre}">
 					<input class="form-control me-2" type="text" placeholder="Nombre Servicio" name="nombre" id="nombre"
 						th:value="${param.nombre}">
-						<button class="btn btn-primary" type="submit">Buscar</button>
+					<button class="btn btn-primary" type="submit">Buscar</button>
 				</form>
 			</nav>
 
@@ -67,15 +67,37 @@
 							<td th:text="${servicios.descripcion}">Descripcion</td>
 							<td th:text="${#numbers.formatCurrency(servicios.precio)}">Precio</td>
 							<td class="text-center">
+
 								<a href="#" th:href="@{/admin/editar/{id}(id=${servicios.id})}"><button type="button"
 										class="btn btn-warning"><i
 											class="fa fa-fw fa-pencil-square-o text-black"></i></button></a> |
-								<a href="#" th:href="@{/admin/borrar/{id}(id=${servicios.id})}"><button type="button"
-										class="btn btn-danger"><i
-											class="fa fa-fw fa-times-circle text-black"></i></button></a>
+								<a href="#"><button type="button" class="btn btn-danger" data-bs-toggle="modal"
+										data-bs-target="#myModal" th:attr="data-bs-target='#myModal'+${servicios.id}"><i
+											class="fa fa-fw fa-trash text-black"></i></button></a>
+								<div class="modal" id="myModal" tabindex="-1" th:id="'myModal'+${servicios.id}">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLabel">Confirmar</h5>
+												<button type="button" class="btn-close" data-bs-dismiss="modal"
+													aria-label="Close"></button>
+											</div>
+											<div class="modal-body">
+												¿Estas seguro de que quieres borrar un servicio?
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary"
+													data-bs-dismiss="modal">Cancelar</button>
+												<a href="#" th:href="@{/admin/borrar/{id}(id=${servicios.id})}"
+													class="btn btn-primary">Borrar</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</td>
+
 							</td>
 						</tr>
-
 					</tbody>
 				</table>
 			</div>
