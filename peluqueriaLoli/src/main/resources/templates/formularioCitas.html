@@ -22,6 +22,43 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<link href="../static/css/css.css" th:href="@{/css/css.css}" rel="stylesheet" />
+
+	<script type="text/javascript">
+		
+			function validar() {
+				nombre = document.getElementById("nombre");
+				telefono = document.getElementById("telefono");
+				fecha = document.getElementById("fecha");
+				hora = document.getElementById("hora");
+	
+				if (nombre.lenght === null || nombre.value === '') {
+					alert('Escriba el nombre');
+					return false;
+	
+				}
+	
+				if (telefono.lenght) {
+					alert('Escriba el número de teléfono correcto');
+					return false;
+				}
+	
+				if (fecha.value === null) {
+					alert('Escriba la fecha');
+					return false;
+				}
+	
+				if (hora.value === null) {
+					alert('Escriba la hora');
+	
+					return false;
+				}
+	
+	
+				return true;
+			}
+
+
+	</script>
 </head>
 
 <body>
@@ -35,26 +72,14 @@
 		<section class="container mt-3" id="servicios">
 			<h2 class="text-start fs-1 fst-italic shadow p-3 mb-5 bg-body rounded ">Listado las Citas disponibles
 			</h2>
-
-			<!--
-			<form th:action="${servicios.id != 0} ? @{/editar/submit} : @{/nuevo/submit}" th:object="${servicios}"
-				method="post" class="bg-info">
-				<input th:if="${servicios.id != 0}" type="hidden" name="id" th:field="*{id}" />
-				<input type="text" name="nombre" th:field="*{nombre}" placeholder="Nombre" />
-				<input type="text" name="descripcion" th:field="*{descripcion}" placeholder="Descripcion" />
-				<input type="number" name="precio" th:field="*{precio}" placeholder="Precio" />
-				<input type="submit" name="enviar" value="Enviar">
-				<a th:href="@{/}"><input type="button" name="cancelar" value="Cancelar"></a>
-			</form>
-			-->
 			<div class="contents d-block mt-5">
 				<div class="container-fluid">
 					<header class="mb-5">
 						<h2 class="text-center text-uppercase text-white">Información de la nueva cita</h2>
 					</header>
-					<form class="row"
+					<form class="row" id="formulario" action="formularioCitas.php"
 						th:action="${citas.id != 0} ? @{/admin/editarCitas/submit} : @{/admin/nuevoCita/submit}"
-						th:object="${citas}" method="post">
+						th:object="${citas}" method="post" onsubmit="return validar()">
 						<input th:if="${citas.id != 0}" type="hidden" name="id" th:field="*{id}" />
 						<div class="col-md-6">
 							<label for="nombre" class="form-label text-white h5">Nombre del Cliente</label>
@@ -64,18 +89,18 @@
 						</div>
 						<div class="col-md-6">
 							<label for="telefonoCliente" class="form-label text-white h5">Telefono del Cliente</label>
-							<input class="form-control" type="text" name="telefonoCliente" th:field="*{telefonoCliente}"
-								placeholder="609835644" />
+							<input class="form-control" type="text" id="telefonoCliente" name="telefonoCliente"
+								th:field="*{telefonoCliente}" placeholder="609835644" />
 						</div>
 						<div class="col-md-6">
 							<label for="fecha" class="form-label text-white h5">Rereservar fecha:</label>
-							<input class="form-control" type="date" name="fecha" th:field="*{fecha}"
+							<input class="form-control" type="date" id="fecha" name="fecha" th:field="*{fecha}"
 								placeholder="17/12/2001" />
 
 						</div>
 						<div class="col-md-6">
 							<label for="hora" class="form-label text-white h5">Rereservar hora:</label>
-							<input class="form-control" type="time" name="hora" th:field="*{hora}"
+							<input class="form-control" type="time" id="hora" name="hora" th:field="*{hora}"
 								placeholder="18:15" />
 						</div>
 						<div class="col-md-12 text-center mb-1">
