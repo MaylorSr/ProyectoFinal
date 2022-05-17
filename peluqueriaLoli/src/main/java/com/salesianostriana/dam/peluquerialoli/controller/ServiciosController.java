@@ -1,5 +1,7 @@
 package com.salesianostriana.dam.peluquerialoli.controller;
 
+import java.util.Optional;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,9 +45,9 @@ public class ServiciosController {
 
 	@GetMapping("/admin/editar/{id}")
 	public String mostrarFormularioEdicion(@PathVariable("id") long id, Model model) {
-		Servicios aEditar = serviciosServicios.findById(id);
+		Optional<Servicios> aEditar = serviciosServicios.findById(id);
 		if (aEditar != null) {
-			model.addAttribute("servicios", aEditar);
+			model.addAttribute("servicios", aEditar.get());
 			return "formulario";
 		} else {
 			return "redirect:/admin/listadoServicios";

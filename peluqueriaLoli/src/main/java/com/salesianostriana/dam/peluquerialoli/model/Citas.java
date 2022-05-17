@@ -20,12 +20,10 @@ import lombok.NoArgsConstructor;
 @Entity
 @Builder
 public class Citas {
-
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
-
 	private String nombreCliente;
 	private String telefonoCliente;
 	

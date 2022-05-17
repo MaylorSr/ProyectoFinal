@@ -41,10 +41,10 @@ public class CitasController {
 	@GetMapping("/admin/editarCitas/{id}")
 	public String mostrarFormularioEdicion(@PathVariable("id") long id, Model model) {
 
-		Citas aEditar = citasServicios.findById(id);
+		Optional<Citas> aEditar = citasServicios.findById(id);
 
 		if (aEditar != null) {
-			model.addAttribute("citas", aEditar);
+			model.addAttribute("citas", aEditar.get());
 			return "formularioCitas";
 		} else {
 			return "redirect:/admin/listadoCitas";
@@ -65,11 +65,11 @@ public class CitasController {
 	
 	/*
 	@GetMapping("/admin/listadoCitas/buscar/nombre/cliente")
-	public String buscarCliente(Model model, @RequestParam String nombreCliente) {
-		model.addAttribute("listadoCitas", citasServicios.buscarPorNombreCliente(nombreCliente));
+	public String buscarCliente(Model model, @RequestParam String nombre) {
+		model.addAttribute("listadoCitas", citasServicios.buscarPorNombre(nombre));
 		return "citas";
-	}*/
-	
+	}
+	*/
 	
 	
 }

@@ -40,10 +40,10 @@
 				<a id="nuevoServicio" th:href="@{/admin/nuevoCita}"><button type="button"
 						class="btn btn-primary mb-1">Añadir
 						cita</button></a>
-				<form class="d-flex" method="GET" th:action="@{/admin/listadoCitas/buscar/nombre/cliente}">
-					<input class="form-control me-2" type="text" placeholder="Nombre del Cliente" name="nombreCliente" id="nombreCliente"
-						th:value="${param.nombreCliente}">
-					<button class="btn btn-primary" type="button">Search</button>
+				<form class="d-flex" method="GET" th:action="@{/admin/listadoCitas/buscar/nombre/cliente)}">
+					<input class="form-control me-2" type="text" placeholder="Nombre Cliente" name="nombreCliente" id="nombreCliente"
+						th:value="${param.nombre}">
+					<button class="btn btn-primary" type="submit">Buscar</button>
 				</form>
 			</nav>
 			<div class="table-responsive-sm">
