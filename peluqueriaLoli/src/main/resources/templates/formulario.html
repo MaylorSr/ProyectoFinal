@@ -22,6 +22,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<link href="../static/css/css.css" th:href="@{/css/css.css}" rel="stylesheet" />
+	<script src="../static/js/" th:href="@{js/js.js}"></script>
 
 </head>
 
@@ -41,13 +42,13 @@
 					<header class="mb-5">
 						<h2 class="text-center text-uppercase text-white">Información del nuevo servicio</h2>
 					</header>
-					<form class="row"
+					<form class="row" id="form"
 						th:action="${servicios.id != 0} ? @{/admin/editar/submit} : @{/admin/nuevo/submit}"
 						th:object="${servicios}" method="post">
 						<input th:if="${servicios.id != 0}" type="hidden" name="id" th:field="*{id}" />
 						<div class="col-md-6">
 							<label for="nombre" class="form-label text-white h5">Nombre</label>
-							<input class="form-control" type="text" name="nombre" th:field="*{nombre}"
+							<input class="form-control" type="text" id="nombre" name="nombre" th:field="*{nombre}"
 								placeholder="Corte" />
 
 						</div>
