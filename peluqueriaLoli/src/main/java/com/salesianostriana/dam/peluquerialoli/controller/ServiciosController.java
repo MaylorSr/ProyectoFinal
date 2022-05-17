@@ -1,7 +1,6 @@
 package com.salesianostriana.dam.peluquerialoli.controller;
 
-import java.util.List;
-import java.util.Optional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.peluquerialoli.model.Servicios;
 import com.salesianostriana.dam.peluquerialoli.servicios.ServiciosServicios;
+import com.salesianostriana.dam.peluquerialoli.formbeans.SearchBean;
 
 @Controller
 public class ServiciosController {
@@ -42,9 +42,7 @@ public class ServiciosController {
 
 	@GetMapping("/admin/editar/{id}")
 	public String mostrarFormularioEdicion(@PathVariable("id") long id, Model model) {
-
-		Optional<Servicios> aEditar = serviciosServicios.findById(id);
-
+		Servicios aEditar = serviciosServicios.findById(id);
 		if (aEditar != null) {
 			model.addAttribute("servicios", aEditar);
 			return "formulario";
@@ -87,10 +85,16 @@ public class ServiciosController {
 		return "carrito";
 	}
 
-	@GetMapping("/admin/listadoServicios/buscar/nombre")
+	@PostMapping("/admin/listadoServicios/buscar/nombre")
 	public String buscar(Model model, @RequestParam String nombre) {
 		model.addAttribute("listadoServicios", serviciosServicios.buscarPorNombre(nombre));
 		return "servicios";
+	}
+
+	@PostMapping("/private/peluqueriaLoli/servicios/buscar/nombre")
+	public String searchProducto(@ModelAttribute("searchForm") SearchBean searchBean, Model model) {
+		model.addAttribute("productos", serviciosServicios.buscarPorNombre(searchBean.getSearch()));
+		return "listadoServicios";
 	}
 
 }

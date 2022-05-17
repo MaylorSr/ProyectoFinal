@@ -41,7 +41,7 @@ public class CitasController {
 	@GetMapping("/admin/editarCitas/{id}")
 	public String mostrarFormularioEdicion(@PathVariable("id") long id, Model model) {
 
-		Optional<Citas> aEditar = citasServicios.findById(id);
+		Citas aEditar = citasServicios.findById(id);
 
 		if (aEditar != null) {
 			model.addAttribute("citas", aEditar);

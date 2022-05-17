@@ -41,8 +41,8 @@ public class CitasServicios extends ServicioBaseImpl<Citas, Long, CitasRepositor
 		return citasRepository.findAll();
 	}
 
-	public Optional<Citas> findById(long id) {
-		return citasRepository.findById(id);
+	public Citas findById(long id) {
+		return citasRepository.findById(id).orElse(null);
 	}
 /*
 	

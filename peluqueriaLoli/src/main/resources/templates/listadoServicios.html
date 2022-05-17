@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 
 <head>
 	<meta charset="UTF-8">
@@ -24,55 +25,59 @@
 
 <body>
 	<nav th:replace="~{fragmentos/navUsuario::div}"></nav>
-	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-		<h1>triana.salesianos.edu Shop</h1>
-		<div class="row">
-			<div class="col-sm-3" th:each="servicios : ${listadoServicios}">
-				<div class="col-item">
-					<div class="photo">
-						<img src="http://placehold.it/350x260"
-							th:src="${#strings.isEmpty(servicios.imagen)} ? 'http://placehold.it/20x40' : ${servicios.imagen}"
-							class="img-responsive" alt="" />
-					</div>
-					<div class="info">
-						<div class="row">
-							<div class="price col-md-12">
-								<h5 th:text="${#strings.abbreviate(servicios.nombre,65)}">Nombre</h5>
-								<div class="price-text-color">
 
-									<th:block th:if="${servicios.precio > 0}">
-										<span class="price-original"
-											th:text="${#numbers.formatCurrency(servicios.precio)}">12,00€</span>
-										<span class="label label-danger"
-											th:text=${#numbers.formatPercent(servicios.precio,1,0)}>1%</span>
-									</th:block>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main w-100 p-5 bg-warning">
+				<h1 class="mt-4 mb-4">Servicios disponibles</h1>
+				<div class="principal">
+
+					<form action="#" th:action="@{search}" th:object="${searchForm}" method="POST">
+						<input type="text" name="nombre" placeholder="Buscar Por Nombre" th:field="*{search}"
+							style="margin-left: 5%; padding: 4px;" />
+						<button class="btn- btn-danger" type="submit" style="padding: 4px;">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+					</form>
+
+
+				</div>
+				<hr class="text-dark">
+				</hr>
+				<div class="row">
+					<div class="col-sm-3 mb-1" th:each="servicios : ${listadoServicios}">
+						<div class="col-item p-2  bg-light border border-light border-1 rounded">
+							<div class="photo rounded">
+								<img src="http://placehold.it/48x48"
+									th:src="${#strings.isEmpty(servicios.imagen)} ? 'http://placehold.it/48x48' : ${servicios.imagen}"
+									class="img-responsive w-100 rounded" alt="" />
+								<div class="">
+									<h2 class="text-center" th:text="${#strings.abbreviate(servicios.nombre,65)}">Nombre
+									</h2>
+									<p class="text-start fs-5"
+										th:text="${#strings.abbreviate(servicios.descripcion,100)}">
+										Descripción</p>
 								</div>
+								<h4 class="font-weight-bold text-danger"
+									th:text="${#numbers.formatCurrency(servicios.precio)}">
+								</h4>
 							</div>
 						</div>
 					</div>
 				</div>
+
 			</div>
 		</div>
-
 	</div>
+	<div th:replace="~{fragmentos/footer::footer}"></div>
 
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js" th:src="@{/webjars/jquery/jquery.min.js}"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-		th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 
-	<th:block th:fragment="javascriptfinal">
-		<script src="https://code.jquery.com/jquery-3.3.1.min.js" th:src="@{/webjars/jquery/jquery.min.js}"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-			th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-	</th:block>
+
 
 
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script src=" https://code.jquery.com/jquery-3.3.1.min.js" th:src="@{/webjars/jquery/jquery.min.js}"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 		th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>

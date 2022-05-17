@@ -30,8 +30,8 @@ public class ServiciosServicios extends ServicioBaseImpl<Servicios, Long, Servic
 	
 	public List<Servicios> findAll() { return serviciosRepository.findAll(); }
 	
-	public Optional<Servicios> findById(long id) {
-		return serviciosRepository.findById(id);
+	public Servicios findById(long id) {
+		return serviciosRepository.findById(id).orElse(null);
 	}
 
 	public List<Servicios> buscarPorNombre(String cadena) {

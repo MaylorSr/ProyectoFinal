@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests().antMatchers("/private/**").hasAnyRole("USER", "ADMIN")
-				.antMatchers("/admin/**", "/private/peluqueriaLoli").hasRole("ADMIN").anyRequest().permitAll().and().exceptionHandling()
+				.antMatchers("/admin/**").hasRole("ADMIN").anyRequest().permitAll().and().exceptionHandling()
 				.accessDeniedPage("/error").and().formLogin()
 				.defaultSuccessUrl("/private/peluqueriaLoli").loginPage("/").loginProcessingUrl("/login")
 				.failureUrl("/login-error").permitAll().and().logout().logoutUrl("/logout").logoutSuccessUrl("/")
