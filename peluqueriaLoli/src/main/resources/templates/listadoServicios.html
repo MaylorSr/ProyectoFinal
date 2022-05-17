@@ -30,8 +30,11 @@
 		.navbar{
 			justify-content: space-between;
 		}
+		.photo:hover{
+			background-color: rgb(122, 188, 188);
+		}
 		
-		
+		#cuerpo{background-color: peachpuff !important}
 	</style>
 </head>
 
@@ -40,7 +43,7 @@
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main w-100 p-5 bg-warning">
+			<div id="cuerpo" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main w-100 p-5 bg-warning">
 				<nav class="navbar navbar-expand-sm navbar-dark  mb-2 p-1">
 					<h1 id="nuevoServicio">Servicios disponibles</h1>
 					<form class="d-flex" th:object="${searchForm}" method="POST" th:action="@{search}">
