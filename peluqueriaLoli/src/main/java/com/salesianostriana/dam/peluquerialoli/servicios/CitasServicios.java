@@ -52,20 +52,25 @@ public class CitasServicios extends ServicioBaseImpl<Citas, Long, CitasRepositor
 	}
 
 	/*
-	 * logica de negocio, no se puede pedir dos citas a la misma hora en el mismo dia, solo se podrá elegir un servicio por cada cita
+	 * logica de negocio, no se puede pedir dos citas a la misma hora en el mismo
+	 * dia, solo se podrá elegir un servicio por cada cita
 	 */
 
 	/**
-	 * Este metodo comprueba si en nuestra lista de citas se encuentra el mismo dia y hora que quiere solicitar el usuario
+	 * Este metodo comprueba si en nuestra lista de citas se encuentra el mismo dia
+	 * y hora que quiere solicitar el usuario
+	 * 
 	 * @param fecha retoma la fecha dada por el usuario
-	 * @param hora retoma la hora dada por el usuario
-	 * @return devuelve un boolean (true) en caso de que la cita que quiere el usuario ya este en la lista
+	 * @param hora  retoma la hora dada por el usuario
+	 * @return devuelve un boolean (true) en caso de que la cita que quiere el
+	 *         usuario ya este en la lista
 	 */
 	public boolean seSolapanFechas(LocalDate fecha, LocalTime hora) {
 		boolean seSolapan = false;
 		for (Citas citas : citasRepository.findAll()) {
 			if (citas.getFecha().equals(fecha) && citas.getHora().equals(hora)) {
 				seSolapan = true;
+
 			}
 		}
 		return seSolapan;

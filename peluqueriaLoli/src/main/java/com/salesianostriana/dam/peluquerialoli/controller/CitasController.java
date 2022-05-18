@@ -58,6 +58,26 @@ public class CitasController {
 
 	}
 
+	@GetMapping("/private/peluqueriaLoli")
+	public String mostrarPaginaWebPrincipal() {
+		return "peluqueriaLoli";
+	}
+
+	@GetMapping("/private/peluqueriaLoli/contacto")
+	public String mostrarContacto() {
+		return "contacto";
+	}
+
+	@GetMapping("/private/peluqueriaLoli/quienesSomos")
+	public String mostrarQuienesSomos() {
+		return "quienesSomos";
+	}
+
+	@GetMapping("/private/error/solicitar/cita")
+	public String mostrarErrorSolicitudCita() {
+		return "errorCita";
+	}
+
 	@PostMapping("/admin/nuevoCita/submit")
 	public String procesarFormulario(@ModelAttribute("citas") Citas citas) {
 		citasServicios.save(citas);
