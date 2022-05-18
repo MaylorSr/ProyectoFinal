@@ -31,18 +31,18 @@
 				fecha = document.getElementById("fecha");
 				hora = document.getElementById("hora");
 	
-				if (nombre.lenght === null || nombre.value === '') {
+				if ( nombre.value === '') {
 					alert('Escriba el nombre');
 					return false;
 	
 				}
 	
-				if (telefono.lenght) {
+				if (telefono.value === '') {
 					alert('Escriba el número de teléfono correcto');
 					return false;
 				}
 	
-				if (fecha.value === null) {
+				if (fecha.value === '') {
 					alert('Escriba la fecha');
 					return false;
 				}
@@ -84,24 +84,24 @@
 						<div class="col-md-6">
 							<label for="nombre" class="form-label text-white h5">Nombre del Cliente</label>
 							<input class="form-control" type="text" name="nombre" th:field="*{nombre}"
-								placeholder="Juan José" />
+								placeholder="Juan José" requiered />
 
 						</div>
 						<div class="col-md-6">
 							<label for="telefonoCliente" class="form-label text-white h5">Telefono del Cliente</label>
 							<input class="form-control" type="text" id="telefonoCliente" name="telefonoCliente"
-								th:field="*{telefonoCliente}" placeholder="609835644" />
+								th:field="*{telefonoCliente}" placeholder="609835644" requiered/>
 						</div>
 						<div class="col-md-6">
 							<label for="fecha" class="form-label text-white h5">Rereservar fecha:</label>
 							<input class="form-control" type="date" id="fecha" name="fecha" th:field="*{fecha}"
-								placeholder="17/12/2001" />
+								placeholder="17/12/2001" requiered />
 
 						</div>
 						<div class="col-md-6">
 							<label for="hora" class="form-label text-white h5">Rereservar hora:</label>
 							<input class="form-control" type="time" id="hora" name="hora" th:field="*{hora}"
-								placeholder="18:15" />
+								placeholder="18:15" requiered />
 						</div>
 						<div class="col-md-12 text-center mb-1">
 							<br>
