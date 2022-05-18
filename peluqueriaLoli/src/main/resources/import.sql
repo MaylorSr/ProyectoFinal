@@ -9,5 +9,8 @@ INSERT INTO servicios (id, nombre, descripcion, imagen, precio, duracion) VALUES
 INSERT INTO servicios (id, nombre, descripcion, imagen, precio, duracion) VALUES (NEXTVAL('hibernate_sequence'),'Planca Cabello Corto',' ', 'https://modaellos.com/wp-content/uploads/2016/06/cortes-de-pelo-corto-hombre-degradado-castano.jpg', '12', '1.5'); 
 INSERT INTO servicios (id, nombre, descripcion, imagen, precio, duracion) VALUES (NEXTVAL('hibernate_sequence'),'Planca Cabello Largo',' ', 'https://modaellos.com/wp-content/uploads/2016/07/cortes-de-pelo-corto-hombre-con-tupe-moreno-ojos-claros-1.jpg', '16', '0.25'); 
 INSERT INTO servicios (id, nombre, descripcion, imagen, precio, duracion)VALUES (NEXTVAL('hibernate_sequence'),'Decoloración','', 'https://cortesdecabellohombre.com/wp-content/uploads/2018/03/comb-over-con-cabello-blanco.jpg', '20', '0.5'); 
+INSERT INTO servicios (id, nombre, descripcion, imagen, precio, duracion)VALUES (NEXTVAL('hibernate_sequence'),'Cortesito CR7','', 'https://www.todonline.co/contenido/uploads/2021/06/Cristiano-Ronaldo-corte-de-pelo-Comb-Over-Undercut-Part.webp', '25', '0.25'); 
+INSERT INTO servicios (id, nombre, descripcion, imagen, precio, duracion)VALUES (NEXTVAL('hibernate_sequence'),'Cortesito Xokas','', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiDo4MT-_F_979H3rXs4S4EoJMiJ4Pi29lifLutcjh7SE0Vc4AxmkVQsq8n7FAW0UzkMU&usqp=CAU', '15', '0.25'); 
+
 
 

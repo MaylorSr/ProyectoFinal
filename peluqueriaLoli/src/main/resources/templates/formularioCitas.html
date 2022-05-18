@@ -23,39 +23,40 @@
 
 	<link href="../static/css/css.css" th:href="@{/css/css.css}" rel="stylesheet" />
 
+	<script th:src="@{/js/js.js}">  </script>
 	<script type="text/javascript">
-		
-			function validar() {
-				nombre = document.getElementById("nombre");
-				telefono = document.getElementById("telefono");
-				fecha = document.getElementById("fecha");
-				hora = document.getElementById("hora");
-	
-				if ( nombre.value === '') {
-					alert('Escriba el nombre');
-					return false;
-	
-				}
-	
-				if (telefono.value === '') {
-					alert('Escriba el número de teléfono correcto');
-					return false;
-				}
-	
-				if (fecha.value === '') {
-					alert('Escriba la fecha');
-					return false;
-				}
-	
-				if (hora.value === null) {
-					alert('Escriba la hora');
-	
-					return false;
-				}
-	
-	
-				return true;
+
+		function validar() {
+			nombre = document.getElementById("nombre");
+			telefono = document.getElementById("telefono");
+			fecha = document.getElementById("fecha");
+			hora = document.getElementById("hora");
+
+			if (nombre.value === '') {
+				alert('Escriba el nombre');
+				return false;
+
 			}
+
+			if (telefono.value === '') {
+				alert('Escriba el número de teléfono correcto');
+				return false;
+			}
+
+			if (fecha.value === '') {
+				alert('Escriba la fecha');
+				return false;
+			}
+
+			if (hora.value === null) {
+				alert('Escriba la hora');
+
+				return false;
+			}
+
+
+			return true;
+		}
 
 
 	</script>
@@ -77,7 +78,7 @@
 					<header class="mb-5">
 						<h2 class="text-center text-uppercase text-white">Información de la nueva cita</h2>
 					</header>
-					<form class="row" id="formulario" action="formularioCitas.php"
+					<form class="row" id="form" action="formularioCitas.php"
 						th:action="${citas.id != 0} ? @{/admin/editarCitas/submit} : @{/admin/nuevoCita/submit}"
 						th:object="${citas}" method="post" onsubmit="return validar()">
 						<input th:if="${citas.id != 0}" type="hidden" name="id" th:field="*{id}" />
@@ -90,7 +91,7 @@
 						<div class="col-md-6">
 							<label for="telefonoCliente" class="form-label text-white h5">Telefono del Cliente</label>
 							<input class="form-control" type="text" id="telefonoCliente" name="telefonoCliente"
-								th:field="*{telefonoCliente}" placeholder="609835644" requiered/>
+								th:field="*{telefonoCliente}" placeholder="609835644" requiered />
 						</div>
 						<div class="col-md-6">
 							<label for="fecha" class="form-label text-white h5">Rereservar fecha:</label>
@@ -102,6 +103,14 @@
 							<label for="hora" class="form-label text-white h5">Rereservar hora:</label>
 							<input class="form-control" type="time" id="hora" name="hora" th:field="*{hora}"
 								placeholder="18:15" requiered />
+						</div>
+						<div class="col-md-6 mt-2">
+							<label for="servicios" class="form-label text-white h5">Servicio:</label>
+							<select name="servicios" id="servicios" th:field="*{servicios}">
+								<option th:each="servicios: ${listadoServicios}" th:value="${servicios.id}"
+									th:text="${servicios.nombre}">
+								</option>
+							</select>
 						</div>
 						<div class="col-md-12 text-center mb-1">
 							<br>

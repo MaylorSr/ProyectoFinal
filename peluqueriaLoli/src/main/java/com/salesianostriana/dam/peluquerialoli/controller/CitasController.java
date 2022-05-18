@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.peluquerialoli.model.Citas;
 import com.salesianostriana.dam.peluquerialoli.servicios.CitasServicios;
+import com.salesianostriana.dam.peluquerialoli.servicios.ServiciosServicios;
 
 @Controller
 public class CitasController {
@@ -22,7 +23,10 @@ public class CitasController {
 	HttpSession session;
 	@Autowired
 	private CitasServicios citasServicios;
-
+	
+	@Autowired
+	private ServiciosServicios serviciosServicios;
+	
 	@GetMapping("/admin/listadoCitas")
 	public String mostrarCitas(Model model) {
 		model.addAttribute("listadoCitas", citasServicios.findAll());
@@ -32,6 +36,7 @@ public class CitasController {
 	@GetMapping("/admin/nuevoCita")
 	public String mostrarFormulario(Model model) {
 		model.addAttribute("citas", new Citas());
+		model.addAttribute("listadoServicios",serviciosServicios.findAll());
 		return "formularioCitas";
 	}
 
