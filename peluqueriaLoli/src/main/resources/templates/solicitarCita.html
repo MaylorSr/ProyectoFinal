@@ -20,42 +20,9 @@
 	<!-- Load an icon library -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	<link href="../static/css/css.css" th:href="@{/css/css.css}" rel="stylesheet" />
-	<script type="text/javascript">
-		function validar() {
-			nombre = document.getElementById("nombre");
-			telefono = document.getElementById("telefono");
-			fecha = document.getElementById("fecha");
-			hora = document.getElementById("hora");
+	<link href="../../css/css.css" th:href="@{/css/css.css}" rel="stylesheet" />
+	<script src="../../js/js.js"></script>
 
-			if (nombre.value === '') {
-				alert('Escriba el nombre');
-				return false;
-
-			}
-
-			if (telefono.value === '') {
-				alert('Escriba el número de teléfono correcto');
-				return false;
-			}
-
-			if (fecha.value === '') {
-				alert('Escriba la fecha');
-				return false;
-			}
-
-			if (hora.value === null) {
-				alert('Escriba la hora');
-
-				return false;
-			}
-
-
-			return true;
-		}
-
-
-	</script>
 	<style type="text/css">
 		form {
 			margin: auto !important;
@@ -66,7 +33,7 @@
 <body>
 	<nav th:replace="~{fragmentos/navUsuario::div}"></nav>
 	<form class="row w-50 mt-5 border border-2 mb-5" id="form" action="#" th:action=" @{/private/nuevoCita/submit}"
-		th:object="${citas}" method="post" onsubmit="return validar()">
+		th:object="${citas}" method="post" onsubmit="return validar4()">
 		<input th:if="${citas.id != 0}" type="hidden" name="id" th:field="*{id}" />
 		<div class="col-md-6">
 			<label for="nombre" class="form-label text-white h5">Nombre</label>

@@ -21,35 +21,8 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<link href="../../css/css.css" th:href="@{/css/css.css}" rel="stylesheet" />
+	<script src="../../js/js.js"></script>
 
-	<script type="text/javascript">
-		function validar() {
-			nombre = document.getElementById("nombre");
-			duracion = document.getElementById("duracion");
-			precio = document.getElementById("precio");
-			if (nombre.lenght === null || nombre.value === '') {
-				alert('Escriba el nombre');
-				return false;
-
-			}
-
-			if (precio.value === null || precio.value < 1) {
-				alert('Escriba un precio correcto');
-				return false;
-
-			}
-
-			if (duracion.value === null) {
-				alert('Escriba una duración razonable')
-				return false;
-			}
-
-
-			return true;
-		}
-
-
-	</script>
 </head>
 
 <body>
@@ -70,7 +43,7 @@
 					</header>
 					<form class="row" id="formulario"
 						th:action="${servicios.id != 0} ? @{/admin/editar/submit} : @{/admin/nuevo/submit}"
-						th:object="${servicios}" method="post" onsubmit="return validar()">
+						th:object="${servicios}" method="post" onsubmit="return validar3()">
 						<input th:if="${servicios.id != 0}" type="hidden" name="id" th:field="*{id}" />
 						<div class="col-md-6">
 							<label for="nombre" class="form-label text-white h5">Nombre</label>

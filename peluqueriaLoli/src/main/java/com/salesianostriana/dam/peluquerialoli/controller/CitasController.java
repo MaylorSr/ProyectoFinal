@@ -80,8 +80,12 @@ public class CitasController {
 
 	@PostMapping("/admin/nuevoCita/submit")
 	public String procesarFormulario(@ModelAttribute("citas") Citas citas) {
-		citasServicios.save(citas);
-		return "redirect:/admin/listadoCitas";
+		if (!citasServicios.seSolapanFechas(citas.getFecha(), citas.getHora())) {
+			citasServicios.save(citas);
+			return "redirect:/admin/listadoCitas";
+		} else {
+			return "redirect:/private/error/solicitar/cita";
+		}
 	}
 
 	@GetMapping("/admin/editarCitas/{id}")

@@ -22,44 +22,8 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<link href="../../css/css.css" th:href="@{/css/css.css}" rel="stylesheet" />
+	<script src="../../js/js.js"></script>
 
-	<!--<script th:src="@{/js/js.js}">  </script>-->
-	<script type="text/javascript">
-
-		function validar() {
-			nombre = document.getElementById("nombre");
-			telefono = document.getElementById("telefono");
-			fecha = document.getElementById("fecha");
-			hora = document.getElementById("hora");
-
-			if (nombre.value === '') {
-				alert('Escriba el nombre');
-				return false;
-
-			}
-
-			if (telefono.value === '') {
-				alert('Escriba el número de teléfono correcto');
-				return false;
-			}
-
-			if (fecha.value === '') {
-				alert('Escriba la fecha');
-				return false;
-			}
-
-			if (hora.value === null) {
-				alert('Escriba la hora');
-
-				return false;
-			}
-
-
-			return true;
-		}
-
-
-	</script>
 </head>
 
 <body>
@@ -80,7 +44,7 @@
 					</header>
 					<form class="row" id="form" action="formularioCitas.php"
 						th:action="${citas.id != 0} ? @{/admin/editarCitas/submit} : @{/admin/nuevoCita/submit}"
-						th:object="${citas}" method="post" onsubmit="return validar()">
+						th:object="${citas}" method="post" onsubmit="return validar1()">
 						<input th:if="${citas.id != 0}" type="hidden" name="id" th:field="*{id}" />
 						<div class="col-md-6">
 							<label for="nombre" class="form-label text-white h5">Nombre del Cliente</label>
