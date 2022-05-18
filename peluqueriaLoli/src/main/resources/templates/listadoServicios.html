@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,23 +19,26 @@
 	<!-- Load an icon library -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	<link rel="stylesheet" type="text/css" href="css/css.css" media="screen">
-	
+	<link rel="stylesheet" type="text/css" href="css/css.css">
+
 	<!--Como no me carga el css, los he puesto aqui, lo hemos visto en clase, gracias.-->
 	<style>
-		.photo{
-			overflow:hidden;
-			height:600px;
+		.photo {
+			overflow: hidden;
+			height: 600px;
 		}
-		
-		.navbar{
+
+		.navbar {
 			justify-content: space-between;
 		}
-		.photo:hover{
+
+		.photo:hover {
 			background-color: rgb(122, 188, 188);
 		}
-		
-		#cuerpo{background-color: peachpuff !important}
+
+		#cuerpo {
+			background-color: peachpuff !important
+		}
 	</style>
 </head>
 
@@ -62,7 +64,7 @@
 								<img src="http://placehold.it/48x48"
 									th:src="${#strings.isEmpty(servicios.imagen)} ? 'http://placehold.it/48x48' : ${servicios.imagen}"
 									class="img-responsive w-100 rounded" alt="" />
-								<div class="">
+								<div>
 									<h2 class="text-center" th:text="${#strings.abbreviate(servicios.nombre,65)}">Nombre
 									</h2>
 									<p class="text-start fs-5"

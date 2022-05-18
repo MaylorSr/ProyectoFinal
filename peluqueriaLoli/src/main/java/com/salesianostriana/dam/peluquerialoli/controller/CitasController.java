@@ -58,11 +58,6 @@ public class CitasController {
 
 	}
 
-	@GetMapping("/private/error/solicitar/cita")
-	public String mostrarErrorSolicitudCita() {
-		return "errorCita";
-	}
-
 	@PostMapping("/admin/nuevoCita/submit")
 	public String procesarFormulario(@ModelAttribute("citas") Citas citas) {
 		citasServicios.save(citas);

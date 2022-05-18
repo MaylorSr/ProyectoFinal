@@ -17,10 +17,27 @@ public class PrivateController {
 		return "private/index";
 	}
 	
-
 	@GetMapping("/private/peluqueriaLoli")
 	public String mostrarPaginaWebPrincipal() {
 		return "peluqueriaLoli";
 	}
+	
+	@GetMapping("/private/peluqueriaLoli/contacto")
+	public String mostrarContacto() {
+		return "contacto";
+	}
+	
+
+	@GetMapping("/private/peluqueriaLoli/quienesSomos")
+	public String mostrarQuienesSomos() {
+		return "quienesSomos";
+	}
+	
+	@GetMapping("/private/error/solicitar/cita")
+	public String mostrarErrorSolicitudCita() {
+		return "errorCita";
+	}
+	
+	
 
 }

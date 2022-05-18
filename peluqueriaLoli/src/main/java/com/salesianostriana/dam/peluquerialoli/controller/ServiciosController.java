@@ -34,7 +34,7 @@ public class ServiciosController {
 	@GetMapping("/admin/nuevo")
 	public String mostrarFormulario(Model model) {
 		model.addAttribute("servicios", new Servicios());
-		return "formulario";
+		return "formularioServicios";
 	}
 
 	@PostMapping("/admin/nuevo/submit")
@@ -48,7 +48,7 @@ public class ServiciosController {
 		Optional<Servicios> aEditar = serviciosServicios.findById(id);
 		if (aEditar != null) {
 			model.addAttribute("servicios", aEditar.get());
-			return "formulario";
+			return "formularioServicios";
 		} else {
 			return "redirect:/admin/listadoServicios";
 		}
@@ -66,22 +66,12 @@ public class ServiciosController {
 		serviciosServicios.delete(id);
 		return "redirect:/admin/listadoServicios";
 	}
-
-	@GetMapping("/private/peluqueriaLoli/quienesSomos")
-	public String mostrarQuienesSomos() {
-		return "quienesSomos";
-	}
-
+	
 	@GetMapping("/private/peluqueriaLoli/servicios")
 	public String mostrarServiciosUser(Model model) {
 		model.addAttribute("listadoServicios", serviciosServicios.findAll());
 		model.addAttribute("searchForm", new SearchBean());
 		return "listadoServicios";
-	}
-
-	@GetMapping("/admin/carrito")
-	public String mostrarCarrito() {
-		return "carrito";
 	}
 
 	@GetMapping("/admin/listadoServicios/buscar/nombre")
@@ -95,12 +85,5 @@ public class ServiciosController {
 		model.addAttribute("listadoServicios", serviciosServicios.buscarPorNombre(searchBean.getSearch()));
 		return "listadoServicios";
 	}
-
-	@GetMapping("/private/peluqueriaLoli/contacto")
-	public String mostrarContacto() {
-		return "contacto";
-	}
-	
-	
 
 }
