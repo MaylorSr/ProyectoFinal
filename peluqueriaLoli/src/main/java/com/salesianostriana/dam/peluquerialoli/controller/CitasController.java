@@ -23,10 +23,10 @@ public class CitasController {
 	HttpSession session;
 	@Autowired
 	private CitasServicios citasServicios;
-	
+
 	@Autowired
 	private ServiciosServicios serviciosServicios;
-	
+
 	@GetMapping("/admin/listadoCitas")
 	public String mostrarCitas(Model model) {
 		model.addAttribute("listadoCitas", citasServicios.findAll());
@@ -36,23 +36,33 @@ public class CitasController {
 	@GetMapping("/admin/nuevoCita")
 	public String mostrarFormulario(Model model) {
 		model.addAttribute("citas", new Citas());
-		model.addAttribute("listadoServicios",serviciosServicios.findAll());
+		model.addAttribute("listadoServicios", serviciosServicios.findAll());
 		return "formularioCitas";
 	}
-	
+
 	@GetMapping("/private/nuevoCita")
 	public String mostrarFormularioUsuario(Model model) {
 		model.addAttribute("citas", new Citas());
-		model.addAttribute("listadoServicios",serviciosServicios.findAll());
+		model.addAttribute("listadoServicios", serviciosServicios.findAll());
 		return "solicitarCita";
 	}
-	
+
 	@PostMapping("/private/nuevoCita/submit")
 	public String procesarFormularioUsuario(@ModelAttribute("citas") Citas citas) {
-		citasServicios.save(citas);
-		return "redirect:/private/peluqueriaLoli";
+		if (!citasServicios.seSolapanFechas(citas.getFecha(), citas.getHora())) {
+			citasServicios.save(citas);
+			return "redirect:/private/peluqueriaLoli";
+		} else {
+			return "redirect:/private/error/solicitar/cita";
+		}
+
 	}
-	
+
+	@GetMapping("private/error/solicitar/cita")
+	public String mostrarErrorSolicitudCita() {
+		return "errorCita";
+	}
+
 	@PostMapping("/admin/nuevoCita/submit")
 	public String procesarFormulario(@ModelAttribute("citas") Citas citas) {
 		citasServicios.save(citas);
@@ -84,11 +94,10 @@ public class CitasController {
 		return "redirect:/admin/listadoCitas";
 	}
 
-
 	@GetMapping("/admin/listadoCitas/buscar/nombre")
 	public String buscarCliente(Model model, @RequestParam String nombre) {
 		model.addAttribute("listadoCitas", citasServicios.buscarPorNombre(nombre));
 		return "citas";
 	}
-	
+
 }

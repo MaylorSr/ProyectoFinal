@@ -58,7 +58,7 @@ public class CitasServicios extends ServicioBaseImpl<Citas, Long, CitasRepositor
 	public boolean seSolapanFechas(LocalDate fecha1, LocalTime hora) {
 		boolean seSolapan = false;
 		for (Citas citas : citasRepository.findAll()) {
-			if (citas.getFecha().equals(fecha1)) {
+			if (citas.getFecha().equals(fecha1) && citas.getHora().equals(hora)) {
 				seSolapan = true;
 			}
 		}
