@@ -39,7 +39,20 @@ public class CitasController {
 		model.addAttribute("listadoServicios",serviciosServicios.findAll());
 		return "formularioCitas";
 	}
-
+	
+	@GetMapping("/private/nuevoCita")
+	public String mostrarFormularioUsuario(Model model) {
+		model.addAttribute("citas", new Citas());
+		model.addAttribute("listadoServicios",serviciosServicios.findAll());
+		return "solicitarCita";
+	}
+	
+	@PostMapping("/private/nuevoCita/submit")
+	public String procesarFormularioUsuario(@ModelAttribute("citas") Citas citas) {
+		citasServicios.save(citas);
+		return "redirect:/private/peluqueriaLoli";
+	}
+	
 	@PostMapping("/admin/nuevoCita/submit")
 	public String procesarFormulario(@ModelAttribute("citas") Citas citas) {
 		citasServicios.save(citas);

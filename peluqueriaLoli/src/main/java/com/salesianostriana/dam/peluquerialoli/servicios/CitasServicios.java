@@ -1,5 +1,7 @@
 package com.salesianostriana.dam.peluquerialoli.servicios;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,9 +47,19 @@ public class CitasServicios extends ServicioBaseImpl<Citas, Long, CitasRepositor
 		return citasRepository.findById(id);
 	}
 
-	
 	public List<Citas> buscarPorNombre(String cadena) {
 		return repositorio.findByNombreContainsIgnoreCase(cadena);
+	}
+
+	/*
+	 * logica de negocio, no se puede pedir dos citas a la misma hora el mismo dia
+	 */
+
+	public boolean seSolapanFechas(LocalDate fecha1, LocalTime hora) {
+		boolean seSolapan;
+		for (Citas citas : citasRepository.findAll()) {
+		}
+
 	}
 
 }
