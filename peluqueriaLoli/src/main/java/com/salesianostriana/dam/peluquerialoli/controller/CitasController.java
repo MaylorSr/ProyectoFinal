@@ -58,7 +58,7 @@ public class CitasController {
 
 	}
 
-	@GetMapping("private/error/solicitar/cita")
+	@GetMapping("/private/error/solicitar/cita")
 	public String mostrarErrorSolicitudCita() {
 		return "errorCita";
 	}

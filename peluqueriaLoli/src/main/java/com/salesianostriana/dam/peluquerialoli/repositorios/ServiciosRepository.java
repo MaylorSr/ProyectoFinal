@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import com.salesianostriana.dam.peluquerialoli.model.Servicios;
 
 public interface ServiciosRepository extends JpaRepository<Servicios, Long> {
-	
 
 	@Query("select s from Servicios s")
 	public List<Servicios> addQuirirIds();

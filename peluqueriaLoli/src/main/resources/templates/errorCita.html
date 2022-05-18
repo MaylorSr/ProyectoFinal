@@ -7,10 +7,10 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Contacto</title>
+	<title>Error Solicitar Cita</title>
 
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	<meta name="description" content="">
+	<meta name="description" content="Esta página muestra un error de que ya hay una cita para esa hora y dia que se quiere solicitar ahora">
 	<meta name="author" content="">
 	<!-- Latest compiled and minified CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -21,9 +21,9 @@
 	<!-- Load an icon library -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	<link rel="stylesheet" type="text/css" href="../../css/css.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="../../css/css.css">
+	<!--Se colocan los estilos en esta parte para no romper con los del css que es más genérico -->
 
-	</script>
 	<style type="text/css">
 		body {
 			display: flex;
@@ -85,8 +85,8 @@
 
 <body>
 	<div class="number">404</div>
-	<div class="text"><span>Ooops...</span><br>page not found</div>
-	<a class="me" href="https://codepen.io/uzcho_/pens/popular/?grid_type=list" target="_blank"></a>
+	<div class="text"><span>Ooops...</span><br>Parece que ya hay una cita escogida en ese tiempo, prueba otra vez!</div>
+	<a class="btn btn-danger mt-2" href="#" role="button" th:href="@{/private/nuevoCita}">Volver</a>
 
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

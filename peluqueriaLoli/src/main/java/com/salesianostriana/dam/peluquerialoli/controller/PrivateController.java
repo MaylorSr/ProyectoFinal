@@ -16,5 +16,11 @@ public class PrivateController {
 
 		return "private/index";
 	}
+	
+
+	@GetMapping("/private/peluqueriaLoli")
+	public String mostrarPaginaWebPrincipal() {
+		return "peluqueriaLoli";
+	}
 
 }

@@ -67,11 +67,6 @@ public class ServiciosController {
 		return "redirect:/admin/listadoServicios";
 	}
 
-	@GetMapping("/private/peluqueriaLoli")
-	public String mostrarPaginaWeb() {
-		return "usuario";
-	}
-
 	@GetMapping("/private/peluqueriaLoli/quienesSomos")
 	public String mostrarQuienesSomos() {
 		return "quienesSomos";
