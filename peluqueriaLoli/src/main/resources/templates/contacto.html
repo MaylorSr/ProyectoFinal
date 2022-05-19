@@ -50,9 +50,9 @@
 <body>
 	<nav th:replace="~{fragmentos/navUsuario::div}"></nav>
 	<header class="text-center fs-1">Peluqueria Loli</header>
-	<form id="form" onsubmit="return validar2()">
-		<input class="text-center" id="nombre" type="text" placeholder="Nombre" requiered>
-		<input class="text-center" id="email" type="text" placeholder="Correo" requiered>
+	<form id="form">
+		<input class="text-center" id="nombre" type="text" placeholder="Nombre" required>
+		<input class="text-center" id="email" type="text" placeholder="Correo" required>
 		<textarea class="text-center" id="message" type="text" placeholder="Comentario"></textarea>
 		<input id="submit" type="submit" value="Enviar">
 	</form>

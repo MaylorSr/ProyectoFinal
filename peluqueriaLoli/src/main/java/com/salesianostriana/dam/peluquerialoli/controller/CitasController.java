@@ -90,11 +90,11 @@ public class CitasController {
 
 	@GetMapping("/admin/editarCitas/{id}")
 	public String mostrarFormularioEdicion(@PathVariable("id") long id, Model model) {
-
+		model.addAttribute("listadoServicios", serviciosServicios.findAll());
 		Optional<Citas> aEditar = citasServicios.findById(id);
-
 		if (aEditar != null) {
 			model.addAttribute("citas", aEditar.get());
+			model.addAttribute("listadoCitas", citasServicios.findAll());
 			return "formularioCitas";
 		} else {
 			return "redirect:/admin/listadoCitas";

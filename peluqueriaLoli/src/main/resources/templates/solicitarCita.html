@@ -39,27 +39,27 @@
 		<div class="col-md-6">
 			<label for="nombre" class="form-label text-white h5">Nombre</label>
 			<input class="form-control" type="text" name="nombre" th:field="*{nombre}" placeholder="Juan José"
-				requiered />
+				required />
 		</div>
 		<div class="col-md-6">
 			<label for="telefonoCliente" class="form-label text-white h5">Telefono</label>
 			<input class="form-control" type="text" id="telefonoCliente" name="telefonoCliente"
-				th:field="*{telefonoCliente}" placeholder="609835644" requiered pattern="[0-9]+" />
+				th:field="*{telefonoCliente}" placeholder="609835644" pattern="[0-9]+" required maxlength="12" minlength="9" />
 		</div>
 		<div class="col-md-6">
 			<label for="fecha" class="form-label text-white h5">Reservar fecha:</label>
 			<input class="form-control" type="date" id="fecha" name="fecha" th:field="*{fecha}" placeholder="17/12/2001"
-				requiered />
+				required />
 
 		</div>
 		<div class="col-md-6">
 			<label for="hora" class="form-label text-white h5">Rereservar hora:</label>
 			<input class="form-control" type="time" id="hora" name="hora" th:field="*{hora}" placeholder="18:15"
-				requiered />
+				required />
 		</div>
 		<div class="col-md-6 mt-2">
 			<label for="servicios" class="form-label text-white h5">Servicio:</label>
-			<select name="servicios" id="servicios" th:field="*{servicios}">
+			<select name="servicios" id="servicios" th:field="*{servicios}" required>
 				<option th:each="servicios: ${listadoServicios}" th:value="${servicios.id}"
 					th:text="${servicios.nombre}">
 				</option>

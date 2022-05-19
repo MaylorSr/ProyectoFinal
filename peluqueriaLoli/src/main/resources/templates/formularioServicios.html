@@ -48,18 +48,18 @@
 						<div class="col-md-6">
 							<label for="nombre" class="form-label text-white h5">Nombre</label>
 							<input class="form-control" type="text" id="nombre" name="nombre" th:field="*{nombre}"
-								placeholder="Corte" />
+								placeholder="Corte" required/>
 
 						</div>
 						<div class="col-md-6">
 							<label for="descripcion" class="form-label text-white h5">Descripción</label>
 							<input class="form-control" type="text" name="descripcion" th:field="*{descripcion}"
-								placeholder="Corte con degradado" />
+							placeholder="Corte con degradado" />
 						</div>
 						<div class="col-md-6">
 							<label for="precio" class="form-label text-white h5">Precio</label>
 							<input class="form-control" type="number" id="precio" name="precio" th:field="*{precio}"
-								placeholder="0" />
+								placeholder="0" required />
 
 						</div>
 						<div class="col-md-6">
@@ -70,7 +70,7 @@
 						<div class="col-md-6">
 							<label for="duracion" class="form-label text-white h5">Duración del Servicio</label>
 							<input class="form-control" type="text" id="duracion" name="duracion" th:field="*{duracion}"
-								placeholder="0.25" />
+								placeholder="0.25" required />
 						</div>
 						<div class="col-md-12 text-center mb-1">
 							<br>
