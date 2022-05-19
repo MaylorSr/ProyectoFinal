@@ -23,14 +23,14 @@
 
 	<link href="../../css/css.css" th:href="@{/css/css.css}" rel="stylesheet" />
 	<script src="../../js/js.js"></script>
-
+	<script th:src="@{/js/datedropper-javascript.js}"></script>-
 </head>
 
 <body>
 	<nav th:replace="~{fragmentos/nav::nav}"></nav>
 	<div th:replace="~{fragmentos/header::nav}"></div>
 	<!-- Page content -->
-	<div class="main">
+	<div class="main" style="margin-top: -2em;">
 		<div class="container-fluid bg-light p-4">
 			<h1 class="text-center text-danger text-uppercase">Peluqueria Loli</h1>
 		</div>
@@ -55,14 +55,20 @@
 						<div class="col-md-6">
 							<label for="telefonoCliente" class="form-label text-white h5">Telefono del Cliente</label>
 							<input class="form-control" type="text" id="telefonoCliente" name="telefonoCliente"
-								th:field="*{telefonoCliente}" placeholder="609835644" required pattern="[0-9]+" minlength="9" maxlength="12" />
+								th:field="*{telefonoCliente}" placeholder="609835644" required pattern="[0-9]+"
+								minlength="9" maxlength="12" />
 						</div>
 						<div class="col-md-6">
 							<label for="fecha" class="form-label text-white h5">Reserva fecha:</label>
 							<input class="form-control" type="date" id="fecha" name="fecha" th:field="*{fecha}"
-								placeholder="17/12/2001" required />
+								placeholder="17/12/2001" required data-dd-opt-custom-class="dd-theme-dark" />
 
 						</div>
+						<script>
+							new dateDropper({
+								selector: 'input[type="date"]'
+							});
+						</script>
 						<div class="col-md-6">
 							<label for="hora" class="form-label text-white h5">Rereservar hora:</label>
 							<input class="form-control" type="time" id="hora" name="hora" th:field="*{hora}"
