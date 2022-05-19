@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,7 +21,7 @@
 
 	<link href="../../css/css.css" th:href="@{/css/css.css}" rel="stylesheet" />
 	<!--<script src="../../js/js.js"></script>-->
-
+	<script th:src="@{/js/datedropper-javascript.js}"></script>-
 	<style type="text/css">
 		form {
 			margin: auto !important;
@@ -41,14 +42,20 @@
 		<div class="col-md-6">
 			<label for="telefonoCliente" class="form-label text-white h5">Telefono</label>
 			<input class="form-control" type="text" id="telefonoCliente" name="telefonoCliente"
-				th:field="*{telefonoCliente}" placeholder="609835644" pattern="[0-9]+" required maxlength="12" minlength="9" />
+				th:field="*{telefonoCliente}" placeholder="609835644" pattern="[0-9]+" required maxlength="12"
+				minlength="9" />
 		</div>
 		<div class="col-md-6">
 			<label for="fecha" class="form-label text-white h5">Reservar fecha:</label>
 			<input class="form-control" type="date" id="fecha" name="fecha" th:field="*{fecha}" placeholder="17/12/2001"
-				required />
+				required data-dd-opt-custom-class="dd-theme-dark" />
 
 		</div>
+		<script>
+			new dateDropper({
+				selector: 'input[type="date"]'
+			});
+		</script>
 		<div class="col-md-6">
 			<label for="hora" class="form-label text-white h5">Rereservar hora:</label>
 			<input class="form-control" type="time" id="hora" name="hora" th:field="*{hora}" placeholder="18:15"
