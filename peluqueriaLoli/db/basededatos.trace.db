@@ -1907,3 +1907,11 @@ INSERT INTO "PUBLIC"."SERVICIOS"("ID","DESCRIPCION","NOMBRE","PRECIO")VALUES(?,?
 org.h2.jdbc.JdbcSQLDataException: Conversión de datos fallida, convirtiendo "'' (SERVICIOS: ""ID"" BIGINT NOT NULL)"
 Data conversion error converting "'' (SERVICIOS: ""ID"" BIGINT NOT NULL)"; SQL statement:
 INSERT INTO "PUBLIC"."SERVICIOS"("ID","DESCRIPCION","NOMBRE","PRECIO")VALUES(?,?,?,?) -- (?1, ?2, ?3, ?4) [22018-199]
+2022-05-18 21:12:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "ALTER[*]"; se esperaba "TABLE, USER, INDEX, SCHEMA, SEQUENCE, VIEW"
+Syntax error in SQL statement "ALTER[*]"; expected "TABLE, USER, INDEX, SCHEMA, SEQUENCE, VIEW"; SQL statement:
+ALTER [42001-199]
+2022-05-18 21:12:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "CITAS[*]"; se esperaba "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"
+Syntax error in SQL statement "CITAS[*]"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+CITAS [42001-199]

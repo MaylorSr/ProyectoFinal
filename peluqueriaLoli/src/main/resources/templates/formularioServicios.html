@@ -71,7 +71,7 @@
 							<label for="duracion" class="form-label text-white h5">Duración del Servicio</label>
 							<input class="form-control" type="text" id="duracion" name="duracion" th:field="*{duracion}"
 								placeholder="0.25" onkeypress="return event.charCode>=48 && event.charCode<=57"
-								requiered />
+								requiered pattern="[0-1]+"/>
 						</div>
 						<div class="col-md-12 text-center mb-1">
 							<br>

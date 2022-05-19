@@ -43,7 +43,7 @@
 		<div class="col-md-6">
 			<label for="telefonoCliente" class="form-label text-white h5">Telefono</label>
 			<input class="form-control" type="text" id="telefonoCliente" name="telefonoCliente"
-				th:field="*{telefonoCliente}" placeholder="609835644" requiered />
+				th:field="*{telefonoCliente}" placeholder="609835644" requiered pattern="[0-9]+" />
 		</div>
 		<div class="col-md-6">
 			<label for="fecha" class="form-label text-white h5">Reservar fecha:</label>
