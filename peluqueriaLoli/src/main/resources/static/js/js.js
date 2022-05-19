@@ -81,7 +81,7 @@ function validar3() {
 
 	}
 
-	if (duracion.value === null) {
+	if (duracion.value === null || duracion.value >= 1.5) {
 		alert('Escriba una duración razonable')
 		return false;
 	}
