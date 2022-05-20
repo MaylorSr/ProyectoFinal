@@ -51,11 +51,10 @@ public class CitasController {
 	public String procesarFormularioUsuario(@ModelAttribute("citas") Citas citas) {
 		if (!citasServicios.seSolapanFechas(citas.getFecha(), citas.getHora())) {
 			citasServicios.save(citas);
-			return "redirect:/private/peluqueriaLoli";
+			return "redirect:/private/nuevoCita";
 		} else {
 			return "redirect:/private/error/solicitar/cita";
 		}
-
 	}
 
 	@GetMapping("/private/peluqueriaLoli")
@@ -103,8 +102,11 @@ public class CitasController {
 
 	@PostMapping("/admin/editarCitas/submit")
 	public String procesarFormularioEdicion(@ModelAttribute("citas") Citas citas) {
-		citasServicios.edit(citas);
-		return "redirect:/admin/listadoCitas";
+		if (!citasServicios.seSolapanFechas(citas.getFecha(), citas.getHora())) {
+			citasServicios.edit(citas);
+			return "redirect:/admin/listadoCitas";
+		}
+		return "redirect:/private/error/solicitar/cita";
 	}
 
 	@GetMapping("admin/borrarCita/{id}")
