@@ -44,6 +44,24 @@ public class UsuarioRepo {
 				.apellidos("user")
 				.fechaNacimiento(LocalDate.of(1976, 1, 1))
 				.build()
+				,
+				Usuario.builder()
+				.username("luismi")
+				.password("12345678")
+				.role("ADMIN")
+				.nombre("Luismi")
+				.apellidos(null)
+				.fechaNacimiento(LocalDate.of(1982, 1, 1))
+				.build()
+				,
+				Usuario.builder()
+				.username("angel")
+				.password("87654321")
+				.role("USER")
+				.nombre("Angel")
+				.apellidos(null)
+				.fechaNacimiento(LocalDate.of(1976, 1, 1))
+				.build()
 				);
 				
 	}

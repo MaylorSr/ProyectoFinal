@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
+#nuevoServicio{
+text-shadow: 1px 3px 0 #969696, 1px 13px 5px #aba8a8;
+}
 
 input:hover {
 			background: #b3aca7;
