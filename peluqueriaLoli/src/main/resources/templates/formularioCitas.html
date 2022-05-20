@@ -22,7 +22,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<link href="../../css/css.css" th:href="@{/css/css.css}" rel="stylesheet" />
-	<script src="../../js/js.js"></script>
+	<script th:src="@{/js/js.js}"></script>
 	<script th:src="@{/js/datedropper-javascript.js}"></script>-
 </head>
 
@@ -42,7 +42,7 @@
 					<header class="mb-5">
 						<h2 class="text-center text-uppercase text-white">Información de la nueva cita</h2>
 					</header>
-					<form class="row" id="form" action="formularioCitas.php"
+					<form class="row needs-validation" id="form" action="#" novalidate
 						th:action="${citas.id != 0} ? @{/admin/editarCitas/submit} : @{/admin/nuevoCita/submit}"
 						th:object="${citas}" method="post" onsubmit="return validar1()">
 						<input th:if="${citas.id != 0}" type="hidden" name="id" th:field="*{id}" />
@@ -50,6 +50,7 @@
 							<label for="nombre" class="form-label text-white h5">Nombre del Cliente</label>
 							<input class="form-control" type="text" name="nombre" th:field="*{nombre}"
 								placeholder="Juan José" required />
+							<div class="invalid-feedback">Rellene este campo porfavor</div>
 
 						</div>
 						<div class="col-md-6">
@@ -57,11 +58,15 @@
 							<input class="form-control" type="text" id="telefonoCliente" name="telefonoCliente"
 								th:field="*{telefonoCliente}" placeholder="609835644" required pattern="[0-9]+"
 								minlength="9" maxlength="12" />
+							<div class="invalid-feedback">Rellene este campo porfavor</div>
+
 						</div>
 						<div class="col-md-6">
 							<label for="fecha" class="form-label text-white h5">Reserva fecha:</label>
 							<input class="form-control" type="date" id="fecha" name="fecha" th:field="*{fecha}"
 								placeholder="17/12/2001" required data-dd-opt-custom-class="dd-theme-dark" />
+							<div class="invalid-feedback">Rellene este campo porfavor</div>
+
 
 						</div>
 						<script>
@@ -73,6 +78,8 @@
 							<label for="hora" class="form-label text-white h5">Rereservar hora:</label>
 							<input class="form-control" type="time" id="hora" name="hora" th:field="*{hora}"
 								placeholder="18:15" required />
+							<div class="invalid-feedback">Rellene este campo porfavor</div>
+
 						</div>
 						<div class="col-md-6 mt-2">
 							<label for="servicios" class="form-label text-white h5">Servicio:</label>
@@ -81,6 +88,8 @@
 									th:text="${servicios.nombre}">
 								</option>
 							</select>
+							<div class="invalid-feedback">Rellene este campo porfavor</div>
+
 						</div>
 						<div class="col-md-12 text-center mb-1">
 							<br>

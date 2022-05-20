@@ -1,5 +1,6 @@
 package com.salesianostriana.dam.peluquerialoli.servicios;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -55,6 +56,11 @@ public class CitasServicios extends ServicioBaseImpl<Citas, Long, CitasRepositor
 	 * logica de negocio, no se puede pedir dos citas a la misma hora en el mismo
 	 * dia, solo se podrá elegir un servicio por cada cita
 	 */
+	/*
+	 * public boolean conocerDiaYHora(LocalDate fecha, LocalTime hora) { boolean
+	 * prohibidoCita = false; if (fecha.getDayOfWeek().getValue() == 7) {
+	 * prohibidoCita = true; } return prohibidoCita; }
+	 */
 
 	/**
 	 * Este metodo comprueba si en nuestra lista de citas se encuentra el mismo dia
@@ -65,14 +71,15 @@ public class CitasServicios extends ServicioBaseImpl<Citas, Long, CitasRepositor
 	 * @return devuelve un boolean (true) en caso de que la cita que quiere el
 	 *         usuario ya este en la lista
 	 */
+
 	public boolean seSolapanFechas(LocalDate fecha, LocalTime hora) {
 		boolean seSolapan = false;
 		for (Citas citas : citasRepository.findAll()) {
 			if (citas.getFecha().equals(fecha) && citas.getHora().equals(hora)) {
 				seSolapan = true;
-
 			}
 		}
+
 		return seSolapan;
 	}
 

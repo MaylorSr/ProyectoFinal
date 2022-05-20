@@ -21,7 +21,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<link href="../../css/css.css" th:href="@{/css/css.css}" rel="stylesheet" />
-	<script src="../../js/js.js"></script>
+	<script th:src="@{/js/js.js}"></script>
 
 </head>
 
@@ -41,25 +41,27 @@
 					<header class="mb-5">
 						<h2 class="text-center text-uppercase text-white">Información del nuevo servicio</h2>
 					</header>
-					<form class="row" id="formulario"
+					<form class="row  needs-validation" id="form" action="#" novalidate
 						th:action="${servicios.id != 0} ? @{/admin/editar/submit} : @{/admin/nuevo/submit}"
-						th:object="${servicios}" method="post" onsubmit="return validar3()">
+						th:object="${servicios}" method="post">
 						<input th:if="${servicios.id != 0}" type="hidden" name="id" th:field="*{id}" />
 						<div class="col-md-6">
 							<label for="nombre" class="form-label text-white h5">Nombre</label>
 							<input class="form-control" type="text" id="nombre" name="nombre" th:field="*{nombre}"
-								placeholder="Corte" required/>
-
+								placeholder="Corte" required />
+							<div class="invalid-feedback">Rellene este campo porfavor</div>
 						</div>
 						<div class="col-md-6">
 							<label for="descripcion" class="form-label text-white h5">Descripción</label>
 							<input class="form-control" type="text" name="descripcion" th:field="*{descripcion}"
-							placeholder="Corte con degradado" />
+								placeholder="Corte con degradado" />
 						</div>
 						<div class="col-md-6">
 							<label for="precio" class="form-label text-white h5">Precio</label>
 							<input class="form-control" type="number" id="precio" name="precio" th:field="*{precio}"
-								placeholder="0" required />
+								placeholder="15" required pattern="[1-30]+" />
+							<div class="invalid-feedback">Rellene este campo porfavor</div>
+
 
 						</div>
 						<div class="col-md-6">
@@ -70,7 +72,9 @@
 						<div class="col-md-6">
 							<label for="duracion" class="form-label text-white h5">Duración del Servicio</label>
 							<input class="form-control" type="text" id="duracion" name="duracion" th:field="*{duracion}"
-								placeholder="0.25" required />
+								placeholder="0.25" required pattern="[0-2.5]+"/>
+							<div class="invalid-feedback">Rellene este campo porfavor</div>
+
 						</div>
 						<div class="col-md-12 text-center mb-1">
 							<br>
