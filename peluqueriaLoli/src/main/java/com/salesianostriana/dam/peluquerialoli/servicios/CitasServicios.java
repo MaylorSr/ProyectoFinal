@@ -52,16 +52,6 @@ public class CitasServicios extends ServicioBaseImpl<Citas, Long, CitasRepositor
 		return repositorio.findByNombreContainsIgnoreCase(cadena);
 	}
 
-	/*
-	 * logica de negocio, no se puede pedir dos citas a la misma hora en el mismo
-	 * dia, solo se podrá elegir un servicio por cada cita
-	 */
-	/*
-	 * public boolean conocerDiaYHora(LocalDate fecha, LocalTime hora) { boolean
-	 * prohibidoCita = false; if (fecha.getDayOfWeek().getValue() == 7) {
-	 * prohibidoCita = true; } return prohibidoCita; }
-	 */
-
 	/**
 	 * Este metodo comprueba si en nuestra lista de citas se encuentra el mismo dia
 	 * y hora que quiere solicitar el usuario

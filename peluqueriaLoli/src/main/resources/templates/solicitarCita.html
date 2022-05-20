@@ -31,7 +31,7 @@
 
 <body>
 	<nav th:replace="~{fragmentos/navUsuario::div}"></nav>
-	
+
 	<form class="row w-50 mt-5 border border-2 mb-5 needs-validation" id="form" action="#" novalidate
 		th:action=" @{/private/nuevoCita/submit}" th:object="${citas}" method="post">
 		<input th:if="${citas.id != 0}" type="hidden" name="id" th:field="*{id}" />
@@ -64,8 +64,8 @@
 		<div class="col-md-6">
 			<label for="hora" class="form-label text-white h5">Rereservar hora:</label>
 			<input class="form-control" type="time" id="hora" name="hora" th:field="*{hora}" placeholder="18:15"
-				required min="16:30" max="19:30" step="600" />
-			<div class="invalid-feedback">Rellene este campo porfavor</div>
+				required min="16:30" max="19:30" />
+			<div class="invalid-feedback">Rellene este campo con las horas de apertura</div>
 
 		</div>
 		<div class="col-md-6 mt-2">
