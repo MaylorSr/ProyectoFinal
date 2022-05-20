@@ -1,5 +1,3 @@
-precio = document.getElementById("precio");
-
 (function() {
 	'use strict';
 	window.addEventListener('load', function() {

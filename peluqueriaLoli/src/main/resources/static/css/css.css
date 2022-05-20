@@ -82,8 +82,8 @@ td:hover {background-color: #19B3D3;}
 
 
 .main {
-    margin-left: 220px;
     /* Same as the width of the sidebar */
+    margin-left: 230px;
     padding: 106px 0px;
 }
 

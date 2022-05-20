@@ -19,7 +19,7 @@
 	<!-- Load an icon library -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	<link rel="stylesheet" type="text/css" th:href="@{css/css.css}" href="../../css/css.css">
+	<link href="../../css/css.css" th:href="@{/css/css.css}" rel="stylesheet" />
 
 	<!--Como no me carga el css, los he puesto aqui, lo hemos visto en clase, gracias.-->
 	<style>
@@ -47,7 +47,7 @@
 
 	<div class="container-fluid">
 		<div class="row">
-			<div id="cuerpo" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main w-100 p-5 bg-warning">
+			<div id="cuerpo" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 w-100 p-5 bg-warning">
 				<nav class="navbar navbar-expand-sm navbar-dark  mb-2 p-1">
 					<h1 id="nuevoServicio">Servicios disponibles</h1>
 					<form class="d-flex" th:object="${searchForm}" method="POST" th:action="@{search}">
