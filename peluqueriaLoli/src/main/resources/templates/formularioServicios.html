@@ -10,7 +10,7 @@
 	<title>Nuevo Servicio</title>
 
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	<meta name="description" content="">
+	<meta name="description" content="Contiene un formulario para dar de alta un nuevo servicio en la peluqueria">
 	<meta name="author" content="">
 	<!-- Latest compiled and minified CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -36,54 +36,56 @@
 		<section class="container mt-3" id="servicios">
 			<h2 class="text-start fs-1 fst-italic shadow p-3 mb-5 bg-body rounded ">Listado de los servicios disponibles
 			</h2>
-			<div class="contents d-block mt-5">
-				<div class="container-fluid">
-					<header class="mb-5">
-						<h2 class="text-center text-uppercase text-white">Información del nuevo servicio</h2>
-					</header>
-					<form class="row  needs-validation" id="form" action="#" novalidate
-						th:action="${servicios.id != 0} ? @{/admin/editar/submit} : @{/admin/nuevo/submit}"
-						th:object="${servicios}" method="post">
-						<input th:if="${servicios.id != 0}" type="hidden" name="id" th:field="*{id}" />
-						<div class="col-md-6">
-							<label for="nombre" class="form-label text-white h5">Nombre</label>
-							<input class="form-control" type="text" id="nombre" name="nombre" th:field="*{nombre}"
-								placeholder="Corte" required />
-							<div class="invalid-feedback">Rellene este campo porfavor</div>
-						</div>
-						<div class="col-md-6">
-							<label for="descripcion" class="form-label text-white h5">Descripción</label>
-							<input class="form-control" type="text" name="descripcion" th:field="*{descripcion}"
-								placeholder="Corte con degradado" />
-						</div>
-						<div class="col-md-6">
-							<label for="precio" class="form-label text-white h5">Precio</label>
-							<input class="form-control" type="number" min="1" id="precio" name="precio"
-								th:field="*{precio}" placeholder="15" required pattern="[0-9]+(\.[0-9][0-9]?)?" />
-							<div class="invalid-feedback">Rellene este campo de manera adecuada</div>
+			<div class="container-fluid">
+				<header class="mb-5">
+					<h2 class="text-center text-uppercase text-white">Información del nuevo servicio</h2>
+				</header>
+				<form class="row mt-2 mb-2" id="formulario" action="#"
+					th:action="${servicios.id != 0} ? @{/admin/editar/submit} : @{/admin/nuevo/submit}"
+					th:object="${servicios}" method="post" onsubmit="return revisarFormulario();">
+					<input th:if="${servicios.id != 0}" type="hidden" name="id" th:field="*{id}" />
+					<div>
+						<label for="nombre" class="form-label text-white h5">Nombre<span
+								class="text-danger">*</span></label>
+						<input class="form-control text-start" type="text" name="nombre" id="nombre"
+							placeholder="Ingrese el nombre del servicio" th:field="*{nombre}">
+					</div>
 
+					<div class="mensajeError text-danger" id="errorNombre">Nombre Incorrecto.</div>
 
-						</div>
-						<div class="col-md-6">
-							<label for="imagen" class="form-label text-white h5">Imagen</label>
-							<input class="form-control" type="text" id="imagen" name="imagen" th:field="*{imagen}"
-								placeholder="https://" />
-						</div>
-						<div class="col-md-6">
-							<label for="duracion" class="form-label text-white h5">Duración del Servicio</label>
-							<input class="form-control" type="text" id="duracion" name="duracion" th:field="*{duracion}"
-								placeholder="0.25" required pattern="[0-2.5]+" />
-							<div class="invalid-feedback">Rellene este campo de manera adecuada</div>
+					<div>
+						<label for="descripcion" class="form-label text-white h5">Descripcion<span
+								class="text-danger">*</span></label>
+						<input class="form-control text-start" type="text" id="descripcion" name="descripcion"
+							th:field="*{descripcion}" placeholder="Se trata de un corte con degradado..." />
+					</div>
+					<div class="mensajeError text-danger" id="errorNombre">Introduzca un mínimo de caractéres.
+					</div>
 
-						</div>
-						<div class="col-md-12 text-center mb-1">
-							<br>
-							<input class="bg-info border-white w-50 mb-2" type="submit" name="enviar" value="Enviar">
-							<a th:href="@{/admin/listadoServicios}"><input class="bg-danger border-white w-50"
-									type="button" name="cancelar" value="Cancelar"></a>
-						</div>
-					</form>
-				</div>
+					<div>
+						<label for="precio" class="form-label text-white h5">Precio:<span
+								class="text-danger">*</span></label>
+						<input class="form-control text-start " type="number" id="precio" name="precio"
+							th:field="*{precio}" placeholder="15" required />
+					</div>
+					<div class="mensajeError text-danger" id="errorNombre">Elige un precio válido.</div>
+					<div>
+						<label for="imagen" class="form-label text-white h5">Url de la imágen<span
+								class="text-danger">*</span></label>
+						<input class="form-control text-start" type="text" name="imagen" id="imagen"
+							placeholder="http://" th:field="*{imagen}">
+					</div>
+					<div>
+						<label for="duracion" class="form-label text-white h5">Duración del Servicio:<span
+								class="text-danger">*</span></label>
+						<input class="form-control text-start" type="text" id="servicio" name="servicio"
+							th:field="*{duracion}" placeholder="0.5" required />
+					</div>
+					<div class="mensajeError text-danger" id="errorNombre">Duración no acorde a lo establecido.</div>
+
+					<button type="reset" class="btn btn-secondary mb-2">Limpiar</button>
+					<button type="submit" id="enviar" class="btn btn-primary mb-2">Enviar</button>
+				</form>
 			</div>
 		</section>
 	</div>

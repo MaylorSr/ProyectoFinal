@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.peluquerialoli.model.Servicios;
+import com.salesianostriana.dam.peluquerialoli.servicios.CitasServicios;
 import com.salesianostriana.dam.peluquerialoli.servicios.ServiciosServicios;
 import com.salesianostriana.dam.peluquerialoli.formbeans.SearchBean;
 
@@ -23,6 +24,9 @@ public class ServiciosController {
 	HttpSession session;
 	@Autowired
 	private ServiciosServicios serviciosServicios;
+
+	@Autowired
+	private CitasServicios citasSevicios;
 
 	@GetMapping("/admin/listadoServicios")
 	public String listarServicios(Model model) {
@@ -62,11 +66,16 @@ public class ServiciosController {
 	}
 
 	@GetMapping("/admin/borrar/{id}")
-	public String borrar(@PathVariable("id") long id) {
-		serviciosServicios.delete(id);
-		return "redirect:/admin/listadoServicios";
+	public String borrar(@PathVariable("id") long id, Model model) {
+		Optional<Servicios> servicios = serviciosServicios.findById(id);
+		if (citasSevicios.numeroCitasServicios(servicios) == 0) {
+			serviciosServicios.delete(id);
+			return "redirect:/admin/listadoServicios";
+		} else {
+			return "redirect:/error";
+		}
 	}
-	
+
 	@GetMapping("/private/peluqueriaLoli/servicios")
 	public String mostrarServiciosUser(Model model) {
 		model.addAttribute("listadoServicios", serviciosServicios.findAll());

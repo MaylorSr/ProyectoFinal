@@ -7,8 +7,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.salesianostriana.dam.peluquerialoli.model.Citas;
+import com.salesianostriana.dam.peluquerialoli.model.Servicios;
 import com.salesianostriana.dam.peluquerialoli.repositorios.CitasRepository;
 import com.salesianostriana.dam.peluquerialoli.servicios.base.ServicioBaseImpl;
 
@@ -70,6 +70,11 @@ public class CitasServicios extends ServicioBaseImpl<Citas, Long, CitasRepositor
 		}
 
 		return seSolapan;
+	}
+	
+
+	public int numeroCitasServicios(Optional<Servicios> servicios) {
+		return citasRepository.findNumCitasByServicios(servicios);
 	}
 
 }

@@ -24,40 +24,94 @@
 	<link href="../../css/css.css" th:href="@{/css/css.css}" rel="stylesheet" />
 	<!--se implementa aqui para no dañar los demas-->
 	<style type="text/css">
-		body {
-			background-color: #e2dedb;
+		form {
+			width: 400px;
+			background: #24303c;
+			padding: 30px;
+			margin: 0 auto !important;
+			margin-top: 100px;
+			border-radius: 4px;
+			font-family: 'calibri';
+			color: white;
+			box-shadow: 7px 13px 37px #000;
 		}
 
-		#form {
-			position: relative;
-			width: 500px;
-			margin: 50px auto 100px auto;
+		form h4 {
+			font-size: 22px;
+			margin-bottom: 20px;
 		}
 
-		input {
+		.form-control {
+			width: 100%;
+			background: #24303c;
+			padding: 10px;
+			border-radius: 4px;
+			margin-bottom: 16px;
+			border: 1px solid #1f53c5;
+			font-family: 'calibri';
+			font-size: 18px;
+			color: white;
+		}
 
-			width: 470px;
-			height: 50px;
-			outline: none;
-			color: #726659;
+		form p {
+			height: 40px;
+			text-align: center;
+			font-size: 18px;
+			line-height: 40px;
+		}
 
-			border: solid 1px #b3aca7;
-			border-bottom: none;
+		form a {
+			color: white;
+			text-decoration: none;
+		}
+
+		form a:hover {
+			color: white;
+			text-decoration: underline;
+		}
+
+		form .botons {
+			width: 100%;
+			background: #1f53c5;
+			border: none;
+			padding: 12px;
+			color: white;
+			margin: 16px 0;
+			font-size: 16px;
 		}
 	</style>
 </head>
 
 <body>
 	<nav th:replace="~{fragmentos/navUsuario::div}"></nav>
-	<header class="text-center fs-1">Peluqueria Loli</header>
-	<form id="form">
-		<input class="text-center" id="nombre" type="text" placeholder="Nombre" required>
+	
+	<form class="row mt-2 mb-2" id="formulario" action="#" method="post" onsubmit="return revisarFormulario();">
+		<h2>Peluqueria Loli</h2>
+		<div>
+			<label for="nombre" class="form-label text-white h5">Nombre<span class="text-danger">*</span></label>
+			<input class="form-control text-start" type="text" name="nombre" id="nombre"
+				placeholder="Ingrese su Nombre">
+		</div>
+		<div class="mensajeError text-danger text-start" id="errorNombre">Nombre Incorrecto.</div>
 
-		<input class="text-center" id="email" type="text" placeholder="Correo" required>
+		<div>
+			<label for="email" class="form-label text-white h5">Email<span class="text-danger">*</span></label>
+			<input class="form-control text-start" type="text" id="email" name="email" placeholder="...@gmail.com" />
+		</div>
+		<div class="mensajeError text-danger text-start" id="errorNombre">Dirección no válida.</div>
 
-		<textarea class="text-center" id="message" type="text" placeholder="Comentario"></textarea>
-		<input id="submit" type="submit" value="Enviar">
+		<div>
+			<label for="descripcion" class="form-label text-white h5">Descripción</label>
+			<textarea class="form-control text-center" id="descripcion" name="descripcion" placeholder="..."
+				rows="3"></textarea>
+		</div>
+		<button type="submit" id="enviar" class="btn btn-primary mb-2">Enviar</button>
+
 	</form>
+
+
+
+
 
 	<div th:replace="~{fragmentos/footer::footer}"></div>
 
