@@ -63,8 +63,8 @@
 							<div class="photo rounded">
 								<img src="http://placehold.it/48x48"
 									th:src="${#strings.isEmpty(servicios.imagen)} ? 'http://placehold.it/48x48' : ${servicios.imagen}"
-									class="img-responsive w-100 rounded"
-									alt="Imagenes de los distintos servicios que se pueden ofrecer." />
+									class="img-responsive w-100 rounded" alt="${servicios.descripcion}">
+								<!--Se usa como texto alternativo-->
 								<div>
 									<h2 class="text-center" th:text="${#strings.abbreviate(servicios.nombre,65)}">Nombre
 									</h2>

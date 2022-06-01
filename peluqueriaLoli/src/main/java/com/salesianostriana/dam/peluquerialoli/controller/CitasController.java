@@ -49,18 +49,24 @@ public class CitasController {
 		if (aEditar != null) {
 			model.addAttribute("citas", aEditar.get());
 			model.addAttribute("listadoCitas", citasServicios.findAll());
+			citasServicios.delete(id);
 			return "formularioCitas";
+
 		} else {
 			return "redirect:/admin/peluqueriaLoli/listadoCitas";
 		}
 	}
-	
+
 	@PostMapping("/editarCita/submit")
 	public String procesarFormularioEdicion(@ModelAttribute("citas") Citas citas) {
-		citasServicios.edit(citas);
-		return "redirect:/admin/peluqueriaLoli/listadoCitas";
+		if (citasServicios.comprobarFechas(citas.getFecha(), citas.getHora())) {
+			citasServicios.edit(citas);
+			return "redirect:/admin/peluqueriaLoli/listadoCitas/";
+		} else {
+			citasServicios.edit(citas);
+			return "redirect:/admin/peluqueriaLoli/listadoCitas/";
+		}
 	}
-
 
 	@PostMapping("/nuevaCita/submit")
 	public String procesarFormulario(@ModelAttribute("citas") Citas citas) {
@@ -68,11 +74,9 @@ public class CitasController {
 			citasServicios.save(citas);
 			return "redirect:/admin/peluqueriaLoli/listadoCitas";
 		} else {
-			return "redirect:/admin/peluqueriaLoli/listadoCitas";
+			return "redirect:/admin/peluqueriaLoli/nuevaCita/?error=true";
 		}
 	}
-	
-	
 
 	@GetMapping("/borrarCita/{id}")
 	public String borrar(@PathVariable("id") long id) {
@@ -85,24 +89,4 @@ public class CitasController {
 		model.addAttribute("listadoCitas", citasServicios.buscarPorNombre(nombre));
 		return "citas";
 	}
-
-	/*
-	 * 
-	 * @GetMapping("/private/peluqueriaLoli") public String
-	 * mostrarPaginaWebPrincipal() { return "peluqueriaLoli"; }
-	 * 
-	 * @GetMapping("/private/peluqueriaLoli/contacto") public String
-	 * mostrarContacto() { return "contacto"; }
-	 * 
-	 * @GetMapping("/private/peluqueriaLoli/quienesSomos") public String
-	 * mostrarQuienesSomos() { return "quienesSomos"; }
-	 * 
-	 * @GetMapping("/private/error/solicitar/cita") public String
-	 * mostrarErrorSolicitudCita() { return "errorCita"; }
-	 * 
-	 * @GetMapping("/private/nuevoCita") public String
-	 * mostrarFormularioUsuario(Model model) { model.addAttribute("citas", new
-	 * Citas()); model.addAttribute("listadoServicios",
-	 * serviciosServicios.findAll()); return "solicitarCita"; }
-	 */
 }

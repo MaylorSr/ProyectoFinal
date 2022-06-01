@@ -161,13 +161,7 @@ function evaluarPrecio() {
 
 function evaluarUrl() {
 	let campoUrl = formulario.imagen;
-	var regex = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
-	if (!regex.test(camporUrl.value)) {
-		resultado = false;
-	} else {
-		resultado = true;
-	}
-
+	var resultado = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/.test(campoUrl.value);
 	cambiarApariencia(campoUrl, resultado);
 
 	return resultado;
@@ -176,16 +170,16 @@ function evaluarUrl() {
 
 function evaluarDuracion() {
 	let campoDuracion = formulario.duracion;
-	let resultado = campoTelefono.value !== "" && !isNaN(campoDuracion.value);
+	let resultado = campoDuracion.value !== "" && !isNaN(campoDuracion.value);
 
 	if (resultado) {
-		resultado = campoDuracion.value.length >= 9 || campoDuracion.value.lenght <= 12;
+		resultado = campoDuracion.value >= 0 || campoDuracion.value <= 2.5;
 	}
 
 	cambiarApariencia(campoDuracion, resultado);
 	return resultado;
 
-}
+}S
 
 
 
