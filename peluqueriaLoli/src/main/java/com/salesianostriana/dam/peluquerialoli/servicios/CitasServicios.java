@@ -61,7 +61,7 @@ public class CitasServicios extends ServicioBaseImpl<Citas, Long, CitasRepositor
 	 *         usuario ya este en la lista
 	 */
 
-	public boolean seSolapanFechas(LocalDate fecha, LocalTime hora) {
+	public boolean comprobarFechas(LocalDate fecha, LocalTime hora) {
 		boolean seSolapan = false;
 		for (Citas citas : citasRepository.findAll()) {
 			if (citas.getFecha().equals(fecha) && citas.getHora().equals(hora)) {
@@ -73,7 +73,7 @@ public class CitasServicios extends ServicioBaseImpl<Citas, Long, CitasRepositor
 	}
 	
 
-	public int numeroCitasServicios(Optional<Servicios> servicios) {
+	public int comprobarNumeroDeCitasporServicios(Optional<Servicios> servicios) {
 		return citasRepository.findNumCitasByServicios(servicios);
 	}
 

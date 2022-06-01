@@ -1,108 +1,202 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
-
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Nuevo Servicio</title>
+	<title>Servicios</title>
 
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	<meta name="description" content="Contiene un formulario para dar de alta un nuevo servicio en la peluqueria">
-	<meta name="author" content="">
+	<meta name="description" content="">
+	<meta name="author" content="Contiene un formulario el cual permite agregar un nuevo servicio de la peluqueria">
 	<!-- Latest compiled and minified CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-	<!-- Latest compiled JavaScript -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
 
 	<!-- Load an icon library -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<link href="../../css/css.css" th:href="@{/css/css.css}" rel="stylesheet" />
-	<script th:src="@{/js/js.js}"></script>
+	<script th:src="@{/js/js.js}" defer></script>
+	<script th:src="@{/js/datedropper-javascript.js}"></script>
+	<style type="text/css">
+		form {
+			width: 400px;
+			background: #24303c;
+			padding: 30px;
+			margin: 0 auto !important;
+			margin-top: 100px;
+			border-radius: 4px;
+			font-family: 'calibri';
+			color: white;
+			box-shadow: 7px 13px 37px #000;
+		}
 
+		form h4 {
+			font-size: 22px;
+			margin-bottom: 20px;
+		}
+
+		.form-control {
+			width: 100%;
+			background: #24303c;
+			padding: 10px;
+			border-radius: 4px;
+			margin-bottom: 16px;
+			border: 1px solid #1f53c5;
+			font-family: 'calibri';
+			font-size: 18px;
+			color: white;
+		}
+
+		form p {
+			height: 40px;
+			text-align: center;
+			font-size: 18px;
+			line-height: 40px;
+		}
+
+		form a {
+			color: white;
+			text-decoration: none;
+		}
+
+		form a:hover {
+			color: white;
+			text-decoration: underline;
+		}
+
+		form .botons {
+			width: 100%;
+			background: #1f53c5;
+			border: none;
+			padding: 12px;
+			color: white;
+			margin: 16px 0;
+			font-size: 16px;
+		}
+	</style>
 </head>
 
 <body>
-	<nav th:replace="~{fragmentos/nav::nav}"></nav>
-	<div th:replace="~{fragmentos/header::nav}"></div>
-	<!-- Page content -->
-	<div class="main">
-		<div class="container-fluid bg-light p-4">
-			<h1 class="text-center text-danger text-uppercase">Peluqueria Loli</h1>
-		</div>
-		<section class="container mt-3" id="servicios">
-			<h2 class="text-start fs-1 fst-italic shadow p-3 mb-5 bg-body rounded ">Listado de los servicios disponibles
-			</h2>
-			<div class="container-fluid">
-				<header class="mb-5">
-					<h2 class="text-center text-uppercase text-white">Información del nuevo servicio</h2>
-				</header>
-				<form class="row mt-2 mb-2" id="formulario" action="#"
-					th:action="${servicios.id != 0} ? @{/admin/editar/submit} : @{/admin/nuevo/submit}"
-					th:object="${servicios}" method="post" onsubmit="return revisarFormulario();">
-					<input th:if="${servicios.id != 0}" type="hidden" name="id" th:field="*{id}" />
-					<div>
-						<label for="nombre" class="form-label text-white h5">Nombre<span
-								class="text-danger">*</span></label>
-						<input class="form-control text-start" type="text" name="nombre" id="nombre"
-							placeholder="Ingrese el nombre del servicio" th:field="*{nombre}">
-					</div>
-
-					<div class="mensajeError text-danger" id="errorNombre">Nombre Incorrecto.</div>
-
-					<div>
-						<label for="descripcion" class="form-label text-white h5">Descripcion<span
-								class="text-danger">*</span></label>
-						<input class="form-control text-start" type="text" id="descripcion" name="descripcion"
-							th:field="*{descripcion}" placeholder="Se trata de un corte con degradado..." />
-					</div>
-					<div class="mensajeError text-danger" id="errorNombre">Introduzca un mínimo de caractéres.
-					</div>
-
-					<div>
-						<label for="precio" class="form-label text-white h5">Precio:<span
-								class="text-danger">*</span></label>
-						<input class="form-control text-start " type="number" id="precio" name="precio"
-							th:field="*{precio}" placeholder="15" required />
-					</div>
-					<div class="mensajeError text-danger" id="errorNombre">Elige un precio válido.</div>
-					<div>
-						<label for="imagen" class="form-label text-white h5">Url de la imágen<span
-								class="text-danger">*</span></label>
-						<input class="form-control text-start" type="text" name="imagen" id="imagen"
-							placeholder="http://" th:field="*{imagen}">
-					</div>
-					<div>
-						<label for="duracion" class="form-label text-white h5">Duración del Servicio:<span
-								class="text-danger">*</span></label>
-						<input class="form-control text-start" type="text" id="servicio" name="servicio"
-							th:field="*{duracion}" placeholder="0.5" required />
-					</div>
-					<div class="mensajeError text-danger" id="errorNombre">Duración no acorde a lo establecido.</div>
-
-					<button type="reset" class="btn btn-secondary mb-2">Limpiar</button>
-					<button type="submit" id="enviar" class="btn btn-primary mb-2">Enviar</button>
-				</form>
+	<div class="wrapper">
+		<!-- Sidebar  -->
+		<nav id="sidebar" class="bg-dark text-white">
+			<div class="sidebar-header">
+				<h3>Peluquería Loli</h3>
+				<strong>PL</strong>
 			</div>
-		</section>
+			<ul class="list-unstyled components">
+				<li>
+					<a th:href="@{/admin/peluqueriaLoli/listadoServicios}" class="text-start text-uppercase">
+						<i class="fa fa-scribd"></i>
+						Servicios
+					</a>
+				</li>
+				<li>
+					<a th:href="@{/admin/peluqueriaLoli/listadoCitas}" class="text-start text-uppercase">
+						<i class="fa fa-bookmark"></i>
+						Citas
+					</a>
+				</li>
+				<li>
+					<a th:href="@{/login}" class="article text-center text-uppercase"><i
+							class="fa fa-sign-out"></i>Logout</a>
+				</li>
+			</ul>
+		</nav>
+
+		<!-- Page Content  -->
+		<div id="content">
+
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<div class="container-fluid">
+					<button type="button" id="sidebarCollapse" class="btn btn-info">
+						<i class="fa fa-bars fa-2x"></i>
+					</button>
+					<div sec:authorize="isAuthenticated()">
+						<i class="fa fa-user-circle fa-3x text-center d-flex">
+							<p class="text-uppercase text-decoration-none h3 text-dark" sec:authentication="name">
+								Nombre </p>
+						</i>
+					</div>
+				</div>
+			</nav>
+
+			<form class="row mt-2 mb-2" name="formularioServicio" id="formulario" action="#"
+				th:action="${servicios.id != 0} ? @{/admin/peluqueriaLoli/editar/submit} : @{/admin/peluqueriaLoli/nuevo/submit}"
+				th:object="${servicios}" method="post" onsubmit="return revisarFormularioServicios();">
+				<input th:if="${servicios.id != 0}" type="hidden" name="id" th:field="*{id}" />
+				<h2>Peluqueria Loli</h2>
+				<div>
+					<label for="nombre" class="form-label text-white h5">Nombre<span
+							class="text-danger">*</span></label>
+					<input class="form-control text-start" type="text" name="nombre" id="nombre"
+						placeholder="Ingrese el nombre del servicio" th:field="*{nombre}" autofocus>
+				</div>
+				<div class="mensajeError text-danger" id="errorNombre">Nombre Incorrecto.</div>
+
+				<div>
+					<label for="descripcion" class="form-label text-white h5">Descripcion<span
+							class="text-danger">*</span></label>
+					<input class="form-control text-start" type="text" id="descripcion" name="descripcion"
+						th:field="*{descripcion}" placeholder="Se trata de un corte con degradado..." />
+				</div>
+				<div class="mensajeError text-danger" id="errorNombre">Introduzca un mínimo de caractéres.</div>
+
+				<div>
+					<label for="precio" class="form-label text-white h5">Precio:<span
+							class="text-danger">*</span></label>
+					<input class="form-control text-start " type="number" id="precio" name="precio" th:field="*{precio}"
+						placeholder="5" />
+				</div>
+				<div class="mensajeError text-danger" id="errorNombre">Elige un precio válido.</div>
+				<div>
+					<label for="imagen" class="form-label text-white h5">Url de la imágen<span
+							class="text-danger">*</span></label>
+					<input class="form-control text-start" type="url" name="imagen" id="imagen" placeholder="http://"
+						th:field="*{imagen}">
+				</div>
+				<div class="mensajeError text-danger" id="errorNombre">Introduzca una dirección válida.</div>
+				<div>
+					<label for="duracion" class="form-label text-white h5">Duración del Servicio:<span
+							class="text-danger">*</span></label>
+					<input class="form-control text-start" type="text" id="duracion" th:field="*{duracion}"
+						name="duracion" placeholder="0.5" required />
+				</div>
+				<div class="mensajeError text-danger" id="errorNombre">Duración no acorde a lo establecido.</div>
+
+				<button type="reset" class="btn btn-secondary mb-2">Limpiar</button>
+				<button type="submit" id="enviar" class="btn btn-primary mb-2">Enviar</button>
+			</form>
+		</div>
 	</div>
 
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<!-- Popper.JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+		integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+		crossorigin="anonymous"></script>
+	<!-- Bootstrap JS -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+		integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+		crossorigin="anonymous"></script>
 
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js" th:src="@{/webjars/jquery/jquery.min.js}"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-		th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-
-	<th:block th:fragment="javascriptfinal">
-		<script src="https://code.jquery.com/jquery-3.3.1.min.js" th:src="@{/webjars/jquery/jquery.min.js}"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-			th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-	</th:block>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#sidebarCollapse').on('click', function () {
+				$('#sidebar').toggleClass('active');
+			});
+		});
+	</script>
 </body>
 
 </html>

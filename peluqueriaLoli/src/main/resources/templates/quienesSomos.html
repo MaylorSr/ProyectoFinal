@@ -20,13 +20,12 @@
 	<!-- Load an icon library -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	<link href="../../css/css.css" th:href="@{/css/css.css}" rel="stylesheet" />
 </head>
 
 <body>
-	<nav th:replace="~{fragmentos/navUsuario::div}"></nav>
+	<nav th:replace="~{fragmentos/nav::nav}"></nav>
 
-	<div class="contents d-block bg-dark">
+	<div class="contents d-block bg-dark " style="margin-top: 6em;">
 		<div class="container-fluid pt-1">
 			<header>
 				<h2 class="text-center text-uppercase text-secondary">¿Quiénes Somos?</h2>
@@ -61,26 +60,13 @@
 						poder inspirar mucho más a nuestros trabajadores.</p>
 				</div>
 			</div>
+			<img th:src="@{/media/localPeluqueria.webp}" class="img-fluid rounded w-50 d-block"
+				alt="Imagen de un local de una peluqueria, con asientos blancos y negros y muy decorada."
+				style="margin: 0 auto;" />
 		</div>
 	</div>
+
 	<div th:replace="~{fragmentos/footer::footer}"></div>
-
-
-
-
-
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js" th:src="@{/webjars/jquery/jquery.min.js}"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-		th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-
-	<th:block th:fragment="javascriptfinal">
-		<script src="https://code.jquery.com/jquery-3.3.1.min.js" th:src="@{/webjars/jquery/jquery.min.js}"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-			th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-	</th:block>
 </body>
 
 </html>
