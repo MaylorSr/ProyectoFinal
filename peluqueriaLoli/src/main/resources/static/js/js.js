@@ -58,9 +58,12 @@ function cambiarApariencia(campo, estado) {
 }
 
 function evaluarDescripcionArea() {
-	let campoDescripcion = formulario.descripcion2;
-	let resultado = campoDescripcion.value !== "";
-	cambiarApariencia(campoDescripcion, resultado);
+	let campoDescripcion2 = formulario.descripcion2;
+	let resultado = campoDescripcion2.value !== "";
+	if (resultado == true) {
+		resultado = campoDescripcion2.value.length >= 5 || campoDescripcion2.value.lenght <= 250;
+	}
+	cambiarApariencia(campoDescripcion2, resultado);
 	return resultado;
 }
 
@@ -73,13 +76,8 @@ function evaluarNombre() {
 
 function evaluarNumeroTelefono() {
 	let campoTelefono = formulario.telefonoCliente;
-	let resultado = campoTelefono.value !== "" && !isNaN(formulario.telefonoCliente.value);
-
-	var regex = new RegExp('^\([0-9]{2}\)((3[0-9]{3}-[0-9]{4})|(9[0-9]{3}-[0-9]{5}))$');
-
-	if (resultado) {
-		resultado = campoTelefono.value.length >= 9 || campoTelefono.value.lenght <= 12 && regex.test(campoTelefono);
-	}
+	let comprobante = /^\d{9}$/;
+	let resultado = campoTelefono.value !== "" && !isNaN(formulario.telefonoCliente.value) && comprobante.test(campoTelefono.value);
 
 	cambiarApariencia(campoTelefono, resultado);
 	return resultado;
@@ -112,7 +110,7 @@ function evaluarFecha() {
 
 
 	if (resultado) {
-		let fechaDate = campoFecha.valueAsDate;
+		campoFecha.valueAsDate;
 		let hoy = new Date().toISOString().slice(0, 10);;
 
 		resultado = campoFecha.value > hoy ||
@@ -172,14 +170,14 @@ function evaluarDuracion() {
 	let campoDuracion = formulario.duracion;
 	let resultado = campoDuracion.value !== "" && !isNaN(campoDuracion.value);
 
-	if (resultado) {
-		resultado = campoDuracion.value >= 0 || campoDuracion.value <= 2.5;
+	if (resultado == true) {
+		resultado = campoDuracion.value >= 0.25 && campoDuracion.value <= 2.5;
 	}
 
 	cambiarApariencia(campoDuracion, resultado);
 	return resultado;
 
-}S
+} S
 
 
 

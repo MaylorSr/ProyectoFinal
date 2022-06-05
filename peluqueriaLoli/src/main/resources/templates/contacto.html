@@ -84,14 +84,14 @@
 
 <body>
 	<nav th:replace="~{fragmentos/nav::nav}"></nav>
-	
+
 	<div class="alert alert-warning alert-dismissible text-center" id="advertencia" role="alert" th:if="${param.error}">
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 			<span aria-hidden="true">&times;</span>
 		</button>
 		<span class="text-dark">¡Gracias por tu comentario, lo tendremos en cuenta!</span>
 	</div>
-	
+
 	<form class="row mt-2 mb-2" name="formularioContacto" id="formulario" method="post" action="#"
 		th:action=" @{/private/peluqueriaLoli/nuevoMensaje/submit}" onsubmit="return revisarFormularioContacto();"
 		style="margin-top: 8em !important;">
@@ -107,7 +107,8 @@
 		</div>
 		<div class="mensajeError text-danger" id="errorNombre">Correo no válido.</div>
 		<div>
-			<label for="descripcion" class="form-label text-white h5">Descripción<span class="text-danger">*</span></label>
+			<label for="descripcion2" class="form-label text-white h5">Descripción<span
+					class="text-danger">*</span></label>
 			<textarea id="descripcion2" name="descripcion2" rows="4" cols="35"></textarea>
 		</div>
 		<div class="mensajeError text-danger" id="errorNombre">Introduzca un mínimo de carácteres.</div>
