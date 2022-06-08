@@ -2,13 +2,6 @@ document.getElementById("nombre").addEventListener("blur", evaluarNombre);
 document.getElementById("telefonoCliente").addEventListener("blur", evaluarNumeroTelefono);
 document.getElementById("fecha").addEventListener("blur", evaluarFecha);
 document.getElementById("hora").addEventListener("blur", evaluarHora);
-document.getElementById("email").addEventListener("blur", evaluarCorreo);
-document.getElementById("descripcion").addEventListener("blur", evaluarDescripcion);
-document.getElementById("precio").addEventListener("blur", evaluarPrecio);
-document.getElementById("imagen").addEventListener("blur", evaluarUrl);
-document.getElementById("duracion").addEventListener("blur", evaluarDuracion);
-document.getElementById("descripcion2").addEventListener("blur", evaluarDescripcionArea);
-
 
 function revisarFormularioCitas() {
 	let resultado = false;
@@ -18,29 +11,6 @@ function revisarFormularioCitas() {
 		evaluarHora();
 
 	formularioCitas.enviar.className = resultado ? "btn btn-success mb-2" : "btn btn-danger mb-2";
-	return resultado;
-}
-
-
-function revisarFormularioServicios() {
-	let resultado = false;
-	resultado = evaluarNombre() &&
-		evaluarDescripcion() &&
-		evaluarPrecio() &&
-		evaluarUrl() &&
-		evaluarDuracion();
-
-	formularioServicio.enviar.className = resultado ? "btn btn-success mb-2" : "btn btn-danger mb-2";
-	return resultado;
-}
-
-function revisarFormularioContacto() {
-	let resultado = false;
-	resultado = evaluarNombre() &&
-		evaluarCorreo() &&
-		evaluarDescripcionArea();
-
-	formularioContacto.enviar.className = resultado ? "btn btn-success mb-2" : "btn btn-danger mb-2";
 	return resultado;
 }
 
@@ -57,15 +27,6 @@ function cambiarApariencia(campo, estado) {
 	}
 }
 
-function evaluarDescripcionArea() {
-	let campoDescripcion2 = formulario.descripcion2;
-	let resultado = campoDescripcion2.value !== "";
-	if (resultado == true) {
-		resultado = campoDescripcion2.value.length >= 5 || campoDescripcion2.value.lenght <= 250;
-	}
-	cambiarApariencia(campoDescripcion2, resultado);
-	return resultado;
-}
 
 function evaluarNombre() {
 	let campoNombre = formulario.nombre;
@@ -83,26 +44,6 @@ function evaluarNumeroTelefono() {
 	return resultado;
 
 }
-
-function evaluarCorreo() {
-	let correo = formulario.email;
-	let resultado = correo.value !== "";
-
-
-	if (resultado) {
-		let partesCorreo = correo.value.split('@');
-		resultado = partesCorreo.length == 2;
-		if (resultado) {
-			let partesDominio = partesCorreo[1].split('.');
-			resultado = partesDominio.length > 1;
-		}
-	}
-
-	cambiarApariencia(correo, resultado);
-
-	return resultado;
-}
-
 
 function evaluarFecha() {
 	let campoFecha = formulario.fecha;
@@ -129,55 +70,6 @@ function evaluarHora() {
 	cambiarApariencia(campoHora, resultado);
 	return resultado;
 }
-
-function evaluarDescripcion() {
-	let campoDescripcion = formulario.descripcion;
-	let resultado = campoDescripcion.value != "";
-
-	if (resultado) {
-		resultado = campoDescripcion.value.length >= 5 || campoDescripcion.value.lenght <= 250;
-	}
-
-	cambiarApariencia(campoDescripcion, resultado);
-	return resultado;
-}
-
-
-function evaluarPrecio() {
-	let campoPrecio = formulario.precio;
-	let resultado = campoPrecio.value != "";
-	let min = 1;
-	if (resultado) {
-
-		resultado = campoPrecio.value >= min;
-	}
-	cambiarApariencia(campoPrecio, resultado);
-
-	return resultado;
-}
-
-
-function evaluarUrl() {
-	let campoUrl = formulario.imagen;
-	var resultado = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/.test(campoUrl.value);
-	cambiarApariencia(campoUrl, resultado);
-
-	return resultado;
-}
-
-
-function evaluarDuracion() {
-	let campoDuracion = formulario.duracion;
-	let resultado = campoDuracion.value !== "" && !isNaN(campoDuracion.value);
-
-	if (resultado == true) {
-		resultado = campoDuracion.value >= 0.25 && campoDuracion.value <= 2.5;
-	}
-
-	cambiarApariencia(campoDuracion, resultado);
-	return resultado;
-
-} S
 
 
 

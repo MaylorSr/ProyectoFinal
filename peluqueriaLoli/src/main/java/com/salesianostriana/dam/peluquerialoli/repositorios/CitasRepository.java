@@ -17,5 +17,5 @@ public interface CitasRepository extends JpaRepository<Citas, Long> {
 
 	@Query("select count(c) from Citas c where c.servicios = ?1")
 	public int findNumCitasByServicios(Optional<Servicios> servicios);
-
+	
 }
