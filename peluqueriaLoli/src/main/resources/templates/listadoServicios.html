@@ -22,6 +22,9 @@
 
 	<link href="../../css/css.css" th:href="@{/css/css.css}" rel="stylesheet" />
 
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
 	<!--Como no me carga el css, los he puesto aqui, lo hemos visto en clase, gracias.-->
 	<style>
 		.photo {
@@ -59,7 +62,7 @@
 				</hr>
 				<div class="row">
 					<div class="col-sm-3 mb-3" th:each="servicios : ${listadoServicios}">
-						<div class="col-item p-2  bg-light border border-light border-1 rounded">
+						<div class="col-item p-2  bg-light border border-light border-1 rounded" data-aos="flip-right">
 							<div class="photo rounded">
 								<img src="http://placehold.it/48x48"
 									th:src="${#strings.isEmpty(servicios.imagen)} ? 'http://placehold.it/48x48' : ${servicios.imagen}"
@@ -84,6 +87,9 @@
 		</div>
 	</div>
 	<div th:replace="~{fragmentos/footer::footer}"></div>
+	<script defer>
+		AOS.init();
+	</script>
 </body>
 
 </html>
