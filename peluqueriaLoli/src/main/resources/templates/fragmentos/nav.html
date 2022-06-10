@@ -18,7 +18,7 @@
 
 	<!-- Load an icon library -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+	
 </head>
 
 <body>
@@ -56,10 +56,12 @@
 							th:href="@{/private/peluqueriaLoli/contacto}">Contáctanos</a>
 					</li>
 					<span style="margin-right: 5px;" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
-						<a class="btn btn-danger" th:href="@{/admin/peluqueriaLoli/listadoServicios}">Gestion</a>
+						<a class="btn btn-info fa fa-book" style="margin-top: 5px;"
+							th:href="@{/admin/peluqueriaLoli/listadoServicios}">Gestion</a>
 					</span>
 					<span>
-						<a class="btn btn-danger text-center text-uppercase" th:href="@{/login}">Logout</a>
+						<a class="btn btn-danger text-center text-uppercase fa fa-sign-out" href="/login"
+							style="margin-top: 5px;" th:href="@{/login}">Logout</a>
 					</span>
 			</div>
 		</div>
