@@ -52,7 +52,7 @@ function evaluarFecha() {
 
 	if (resultado) {
 		campoFecha.valueAsDate;
-		let hoy = new Date().toISOString().slice(0, 10);;
+		let hoy = new Date().toISOString().slice(0, 10);
 
 		resultado = campoFecha.value > hoy ||
 			(campoFecha.value == hoy) ||
